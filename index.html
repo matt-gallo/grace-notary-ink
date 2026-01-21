@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Need a document notarized today? Grace Notary Ink provides fast, reliable mobile notary service in Boise and surrounding Idaho areas. Same-day and after-hours available.">
+    <meta name="keywords" content="mobile notary, notary service, boise notary, idaho notary, same day notary, emergency notary, mortgage signing, loan signing">
+    <title>Grace Notary Ink | Mobile Notary Service in Boise & Idaho</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Need a document notarized today? We come to you.">
+    <meta property="og:description" content="Fast, reliable mobile notary service in Boise and surrounding areas. Same-day and after-hours available.">
+    <meta property="og:url" content="https://www.gracenotary-ink.com">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Grace Notary Ink",
+      "description": "Mobile and Online Notary Services",
+      "telephone": "(208) 870-8576",
+      "email": "gracenotary.ink@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Idaho",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "43.6150",
+        "longitude": "-116.2023"
+      },
+      "url": "https://www.gracenotary-ink.com",
+      "areaServed": [
+        "Ada County, ID",
+        "Canyon County, ID",
+        "Boise, ID"
+      ],
+      "openingHours": [
+        "Mo-Sa 06:00-23:00",
+        "Su 14:00-23:00"
+      ],
+      "priceRange": "$$"
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2c5282;
+            --accent-color: #c53030;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        /* Header / Navigation */
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .emergency-phone {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .emergency-phone:hover {
+            background: #9b2c2c;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subheadline {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-emergency {
+            background: var(--accent-color);
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-emergency:hover {
+            background: #9b2c2c;
+            transform: translateY(-3px);
+        }
+
+        /* Trust Signals */
+        .trust-signals {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem auto 0;
+            max-width: 600px;
+        }
+
+        .trust-signals p {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .rating {
+            color: #f6ad55;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .calendar-section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .calendar-embed {
+            background: var(--bg-light);
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .calendar-placeholder {
+            color: var(--text-light);
+        }
+
+        .calendar-placeholder h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Service Areas */
+        .service-areas {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .service-areas h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .counties {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        /* Why Choose Us */
+        .why-choose-us {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-choose-us h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Google Reviews Section */
+        .reviews-section {
+            background: var(--bg-light);
+            padding: 4rem 2rem;
+        }
+
+        .reviews-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .reviews-container h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .reviews-embed {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .calendar-embed {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Grace Notary Ink</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:2088708576" class="emergency-phone">Emergency Notary Line: (208) 870-8576</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Need a document notarized today? We come to you.</h1>
+            <p class="hero-subheadline">Fast, reliable mobile notary service in Boise and surrounding areas. Same-day and after-hours available.</p>
+
+            <div class="cta-buttons">
+                <a href="#calendar" class="btn btn-primary">Get Your Document Signed Today</a>
+                <a href="tel:2088708576" class="btn btn-emergency">Emergency? Call Now</a>
+            </div>
+
+            <div class="trust-signals">
+                <p><span class="rating">⭐⭐⭐⭐⭐</span> 5.0 rating on Google | Hundreds of local signings</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="calendar-section">
+        <h2>Book Your Appointment Now</h2>
+        <div class="calendar-embed">
+            <div class="calendar-placeholder">
+                <h3>📅 Embedded Calendar Goes Here</h3>
+                <p>Insert your booking calendar embed code (e.g., Calendly, Acuity, Square Appointments)</p>
+                <p style="margin-top: 1rem;">Time blocks include built-in buffer for travel protection</p>
+            </div>
+            <!-- Replace the placeholder above with your actual calendar embed code -->
+            <!-- Example for Calendly:
+            <div class="calendly-inline-widget" data-url="https://calendly.com/your-link" style="min-width:320px;height:630px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            -->
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="service-areas">
+        <h2>We Come To Your Home or Office</h2>
+        <div class="counties">
+            <p>Serving all of these Idaho counties:</p>
+            <p><strong>Ada, Adams, Blaine, Boise, Camas, Canyon, Cassia, Custer, Elmore, Gem, Gooding, Jerome, Lincoln, Minidoka, Owyhee, Payette, Twin Falls, Valley, Washington</strong></p>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <h2>Why Choose Grace Notary Ink</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>⏰ Always On Time</h3>
+                <p>We take great pride in our punctuality, ensuring that we are always on time for every notary appointment, guaranteeing a seamless and reliable experience.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🇺🇸 Veteran Owned</h3>
+                <p>As a veteran-owned notary business, we bring the principles of integrity, attention to detail, and a strong sense of duty to every notarization service.</p>
+            </div>
+            <div class="feature-card">
+                <h3>✓ Detail Oriented</h3>
+                <p>With a meticulous eye for detail, we approach every notary service with precision and thoroughness, leaving no room for errors in the most critical documents.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Reviews -->
+    <section class="reviews-section">
+        <div class="reviews-container">
+            <h2>Trusted by Hundreds of People in Stressful Moments</h2>
+            <div class="reviews-embed">
+                <div class="calendar-placeholder">
+                    <h3>⭐ Google Reviews Widget Goes Here</h3>
+                    <p>Insert your Google Reviews embed code or widget</p>
+                    <p style="margin-top: 1rem;"><a href="reviews.html" style="color: var(--secondary-color); font-weight: 600;">View all reviews →</a></p>
+                </div>
+                <!-- Replace with actual Google Reviews widget embed code -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Grace Notary Ink</h3>
+                <p>Mobile & Online Notary Services</p>
+                <p>Making Your Documents Official</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Emergency Line: (208) 870-8576</p>
+                <p>Email: gracenotary.ink@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Sunday: 2:00 PM - 11:00 PM</p>
+                <p>Monday - Saturday: 6:00 AM - 11:00 PM</p>
+                <p><strong>Available 7 Days a Week</strong></p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="services.html">Services</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Disclaimer: We are not licensed attorneys and cannot give legal advice, prepare documents, or receive payment for legal advice.</p>
+            <p>&copy; 2026 All Rights Reserved | Grace Notary Ink | Created by ZING.work</p>
+            <p><a href="#" style="color: rgba(255,255,255,0.7);">Data Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll to calendar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

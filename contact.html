@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Grace Notary Ink for mobile notary services in Boise and Idaho. Call (208) 870-8576 or fill out our contact form for fast response.">
+    <title>Contact Us | Grace Notary Ink</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2c5282;
+            --accent-color: #c53030;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        /* Header / Navigation */
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .emergency-phone {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .emergency-phone:hover {
+            background: #9b2c2c;
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Urgency Banner */
+        .urgency-banner {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .urgency-banner p {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .urgency-banner a {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: var(--bg-light);
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .contact-info h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-item a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--white);
+            border: 2px solid var(--bg-light);
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .contact-form h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--bg-light);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-note {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Service Areas */
+        .service-areas {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 3rem 2rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+
+        .service-areas h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .counties-list {
+            column-count: 3;
+            column-gap: 2rem;
+            list-style: none;
+        }
+
+        .counties-list li {
+            padding: 0.5rem 0;
+            color: var(--text-dark);
+        }
+
+        .counties-list li::before {
+            content: "✓ ";
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .counties-list {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .counties-list {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Grace Notary Ink</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:2088708576" class="emergency-phone">Emergency Notary Line: (208) 870-8576</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Get in Touch</h1>
+        <p>We're here to help with your notarization needs</p>
+    </section>
+
+    <!-- Urgency Banner -->
+    <section class="urgency-banner">
+        <p>⚡ If this is time-sensitive, <a href="tel:2088708576">calling is fastest: (208) 870-8576</a></p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+
+            <div class="contact-item">
+                <h3>📞 Phone</h3>
+                <p><a href="tel:2088708576">(208) 870-8576</a></p>
+                <p class="form-note">Available 7 days a week</p>
+            </div>
+
+            <div class="contact-item">
+                <h3>📧 Email</h3>
+                <p><a href="mailto:gracenotary.ink@gmail.com">gracenotary.ink@gmail.com</a></p>
+                <p class="form-note">We typically respond within 24 hours</p>
+            </div>
+
+            <div class="contact-item">
+                <h3>⏰ Hours</h3>
+                <p><strong>Monday - Saturday:</strong> 6:00 AM - 11:00 PM</p>
+                <p><strong>Sunday:</strong> 2:00 PM - 11:00 PM</p>
+                <p class="form-note">Same-day appointments available</p>
+            </div>
+
+            <div class="contact-item">
+                <h3>📍 Service Area</h3>
+                <p>Mobile notary service throughout Idaho</p>
+                <p class="form-note">We come to your home, office, hospital, or assisted living facility</p>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                    <p class="form-note">We'll call or text you back</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Type of Service</label>
+                    <select id="service" name="service">
+                        <option value="">Select a service...</option>
+                        <option value="mortgage">Mortgage/Loan Signing</option>
+                        <option value="poa">Power of Attorney</option>
+                        <option value="estate">Will/Estate Documents</option>
+                        <option value="vehicle">Vehicle Transfer</option>
+                        <option value="business">Business Documents</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="urgency">Urgency Level</label>
+                    <select id="urgency" name="urgency">
+                        <option value="">How soon do you need service?</option>
+                        <option value="emergency">Emergency (Today)</option>
+                        <option value="urgent">Urgent (Within 2-3 days)</option>
+                        <option value="flexible">Flexible (Within a week)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required placeholder="Tell us about your notary needs..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="service-areas">
+        <h2>Counties We Serve</h2>
+        <ul class="counties-list">
+            <li>Ada County</li>
+            <li>Adams County</li>
+            <li>Blaine County</li>
+            <li>Boise County</li>
+            <li>Camas County</li>
+            <li>Canyon County</li>
+            <li>Cassia County</li>
+            <li>Custer County</li>
+            <li>Elmore County</li>
+            <li>Gem County</li>
+            <li>Gooding County</li>
+            <li>Jerome County</li>
+            <li>Lincoln County</li>
+            <li>Minidoka County</li>
+            <li>Owyhee County</li>
+            <li>Payette County</li>
+            <li>Twin Falls County</li>
+            <li>Valley County</li>
+            <li>Washington County</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Grace Notary Ink</h3>
+                <p>Mobile & Online Notary Services</p>
+                <p>Making Your Documents Official</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Emergency Line: (208) 870-8576</p>
+                <p>Email: gracenotary.ink@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Sunday: 2:00 PM - 11:00 PM</p>
+                <p>Monday - Saturday: 6:00 AM - 11:00 PM</p>
+                <p><strong>Available 7 Days a Week</strong></p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Disclaimer: We are not licensed attorneys and cannot give legal advice, prepare documents, or receive payment for legal advice.</p>
+            <p>&copy; 2026 All Rights Reserved | Grace Notary Ink | Created by ZING.work</p>
+            <p><a href="#" style="color: rgba(255,255,255,0.7);">Data Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handler (customize based on your backend)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Add your form submission logic here
+            // This could be an AJAX call to your backend, or integration with a service like Formspree, etc.
+
+            alert('Thank you for contacting Grace Notary Ink! We will respond shortly.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
