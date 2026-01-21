@@ -7,7 +7,7 @@
     <title>Contact Us | Grace Notary Ink</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -17,20 +17,28 @@
         }
 
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #2c5282;
-            --accent-color: #c53030;
-            --text-dark: #2d3748;
-            --text-light: #718096;
-            --bg-light: #f7fafc;
+            --primary-color: #5dade2;
+            --secondary-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
             --white: #ffffff;
+            --charcoal: #34495e;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', Georgia, serif;
         }
 
         /* Header / Navigation */
@@ -78,7 +86,7 @@
         }
 
         .emergency-phone {
-            background: var(--accent-color);
+            background: var(--secondary-color);
             color: var(--white);
             padding: 0.5rem 1.5rem;
             border-radius: 4px;
@@ -89,7 +97,7 @@
         }
 
         .emergency-phone:hover {
-            background: #9b2c2c;
+            background: #2980b9;
             transform: translateY(-2px);
         }
 
@@ -116,19 +124,27 @@
 
         /* Urgency Banner */
         .urgency-banner {
-            background: var(--accent-color);
-            color: var(--white);
+            background: #fef5e7;
+            color: var(--text-dark);
             padding: 1.5rem 2rem;
             text-align: center;
+            border-top: 3px solid #f39c12;
+            border-bottom: 3px solid #f39c12;
         }
 
         .urgency-banner p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
+            margin: 0;
         }
 
         .urgency-banner a {
-            color: var(--white);
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .urgency-banner a:hover {
             text-decoration: underline;
         }
 
@@ -335,6 +351,17 @@
             font-size: 0.9rem;
         }
 
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .contact-section {
@@ -348,10 +375,43 @@
         }
 
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
             .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+
+            .nav-links.active {
+                max-height: 400px;
+            }
+
+            .nav-links li {
                 width: 100%;
-                justify-content: center;
-                margin-top: 1rem;
+                border-bottom: 1px solid var(--bg-light);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .emergency-phone {
+                margin: 1rem;
+                display: block;
+                text-align: center;
             }
 
             .contact-info,
@@ -370,6 +430,9 @@
     <header class="header">
         <nav class="nav-container">
             <a href="index.html" class="logo">Grace Notary Ink</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="menu-icon">☰</span>
+            </button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -382,13 +445,13 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>Get in Touch</h1>
-        <p>We're here to help with your notarization needs</p>
+        <h1>Contact Grace Notary Ink</h1>
+        <p>Questions about our mobile notary services? Need to schedule an appointment? We're here to help.</p>
     </section>
 
     <!-- Urgency Banner -->
     <section class="urgency-banner">
-        <p>⚡ If this is time-sensitive, <a href="tel:2088708576">calling is fastest: (208) 870-8576</a></p>
+        <p>⚡ For urgent or same-day notary needs, calling is fastest: <a href="tel:2088708576">(208) 870-8576</a></p>
     </section>
 
     <!-- Contact Section -->
@@ -400,7 +463,7 @@
             <div class="contact-item">
                 <h3>📞 Phone</h3>
                 <p><a href="tel:2088708576">(208) 870-8576</a></p>
-                <p class="form-note">Available 7 days a week</p>
+                <p class="form-note">Available 7 days a week for scheduling and questions</p>
             </div>
 
             <div class="contact-item">
@@ -410,10 +473,10 @@
             </div>
 
             <div class="contact-item">
-                <h3>⏰ Hours</h3>
+                <h3>⏰ Business Hours</h3>
                 <p><strong>Monday - Saturday:</strong> 6:00 AM - 11:00 PM</p>
                 <p><strong>Sunday:</strong> 2:00 PM - 11:00 PM</p>
-                <p class="form-note">Same-day appointments available</p>
+                <p class="form-note">Same-day and emergency appointments available</p>
             </div>
 
             <div class="contact-item">
@@ -433,42 +496,44 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email *</label>
+                    <label for="email">Email Address *</label>
                     <input type="email" id="email" name="email" required>
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Phone Number *</label>
                     <input type="tel" id="phone" name="phone" required>
-                    <p class="form-note">We'll call or text you back</p>
+                    <p class="form-note">Preferred method for us to reach you</p>
                 </div>
 
                 <div class="form-group">
-                    <label for="service">Type of Service</label>
+                    <label for="service">Type of Service Needed</label>
                     <select id="service" name="service">
-                        <option value="">Select a service...</option>
+                        <option value="">Select a service type...</option>
                         <option value="mortgage">Mortgage/Loan Signing</option>
                         <option value="poa">Power of Attorney</option>
                         <option value="estate">Will/Estate Documents</option>
                         <option value="vehicle">Vehicle Transfer</option>
                         <option value="business">Business Documents</option>
-                        <option value="other">Other</option>
+                        <option value="general">General Notarization</option>
+                        <option value="other">Other / Not Sure</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="urgency">Urgency Level</label>
+                    <label for="urgency">When Do You Need Service?</label>
                     <select id="urgency" name="urgency">
-                        <option value="">How soon do you need service?</option>
-                        <option value="emergency">Emergency (Today)</option>
-                        <option value="urgent">Urgent (Within 2-3 days)</option>
-                        <option value="flexible">Flexible (Within a week)</option>
+                        <option value="">Select your timeframe...</option>
+                        <option value="emergency">Today (Emergency)</option>
+                        <option value="urgent">Tomorrow or within 2-3 days</option>
+                        <option value="this-week">This week</option>
+                        <option value="flexible">Next week or flexible timing</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="message">Message *</label>
-                    <textarea id="message" name="message" required placeholder="Tell us about your notary needs..."></textarea>
+                    <textarea id="message" name="message" required placeholder="Please provide details about your notarization needs, preferred location, and any special requirements..."></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Send Message</button>
@@ -478,7 +543,10 @@
 
     <!-- Service Areas -->
     <section class="service-areas">
-        <h2>Counties We Serve</h2>
+        <h2>Idaho Counties We Serve</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--text-light);">
+            Grace Notary Ink provides mobile notary services throughout these Idaho counties:
+        </p>
         <ul class="counties-list">
             <li>Ada County</li>
             <li>Adams County</li>
@@ -500,6 +568,9 @@
             <li>Valley County</li>
             <li>Washington County</li>
         </ul>
+        <p style="text-align: center; margin-top: 2rem; color: var(--text-dark); font-weight: 600;">
+            Don't see your county listed? Contact us to check availability in your area.
+        </p>
     </section>
 
     <!-- Footer -->
@@ -531,12 +602,33 @@
         </div>
         <div class="footer-bottom">
             <p>Disclaimer: We are not licensed attorneys and cannot give legal advice, prepare documents, or receive payment for legal advice.</p>
-            <p>&copy; 2026 All Rights Reserved | Grace Notary Ink | Created by ZING.work</p>
+            <p>&copy; 2026 All Rights Reserved | Grace Notary Ink | Created by <a href="https://trueflow.work" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.9); text-decoration: underline;">TrueFlow</a></p>
             <p><a href="#" style="color: rgba(255,255,255,0.7);">Data Privacy Policy</a></p>
         </div>
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                menuIcon.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                    menuIcon.textContent = '☰';
+                });
+            });
+        }
+
         // Form submission handler (customize based on your backend)
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();

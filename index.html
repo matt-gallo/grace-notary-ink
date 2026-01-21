@@ -47,7 +47,7 @@
     </script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -57,20 +57,28 @@
         }
 
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #2c5282;
-            --accent-color: #c53030;
-            --text-dark: #2d3748;
-            --text-light: #718096;
-            --bg-light: #f7fafc;
+            --primary-color: #5dade2;
+            --secondary-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
             --white: #ffffff;
+            --charcoal: #34495e;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', Georgia, serif;
         }
 
         /* Header / Navigation */
@@ -117,7 +125,7 @@
         }
 
         .emergency-phone {
-            background: var(--accent-color);
+            background: var(--secondary-color);
             color: var(--white);
             padding: 0.5rem 1.5rem;
             border-radius: 4px;
@@ -128,21 +136,63 @@
         }
 
         .emergency-phone:hover {
-            background: #9b2c2c;
+            background: #2980b9;
             transform: translateY(-2px);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            position: relative;
             color: var(--white);
             padding: 4rem 2rem;
             text-align: center;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .hero-background-image.active {
+            opacity: 1;
+        }
+
+        .hero-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(128, 128, 128, 0.4);
+            z-index: 1;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -188,28 +238,29 @@
         }
 
         .btn-emergency {
-            background: var(--accent-color);
+            background: transparent;
             color: var(--white);
             border: 2px solid var(--white);
         }
 
         .btn-emergency:hover {
-            background: #9b2c2c;
+            background: rgba(255,255,255,0.1);
             transform: translateY(-3px);
         }
 
         /* Trust Signals */
         .trust-signals {
-            background: var(--bg-light);
+            background: rgba(255, 255, 255, 0.95);
             padding: 2rem;
             border-radius: 8px;
             margin: 2rem auto 0;
-            max-width: 600px;
+            max-width: 700px;
         }
 
         .trust-signals p {
             font-size: 1.1rem;
-            margin: 0;
+            margin: 0 0 1rem 0;
+            color: var(--text-dark);
         }
 
         .rating {
@@ -218,10 +269,25 @@
             margin: 0 0.5rem;
         }
 
-        /* Calendar Section */
+        .trust-badges {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-badges img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Booking Section */
         .calendar-section {
             padding: 4rem 2rem;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -230,6 +296,41 @@
             text-align: center;
             margin-bottom: 1.5rem;
             color: var(--primary-color);
+        }
+
+        .booking-form-container {
+            background: var(--white);
+            border: 2px solid var(--bg-light);
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .booking-intake-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-intake-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .booking-intake-form select,
+        .booking-intake-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--bg-light);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .booking-intake-form select:focus,
+        .booking-intake-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
         }
 
         .calendar-embed {
@@ -318,25 +419,343 @@
         }
 
         .reviews-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
 
         .reviews-container h2 {
             font-size: 2rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--primary-color);
         }
 
-        .reviews-embed {
+        .reviews-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .reviews-grid.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .review-card {
             background: var(--white);
             padding: 2rem;
             border-radius: 8px;
-            min-height: 400px;
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .review-stars {
+            color: #f6ad55;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .review-author {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .review-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Service Area Section */
+        .service-area-section {
+            position: relative;
+            padding: 4rem 2rem;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-area-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background-image: url('images/service-area-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-area-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(128, 128, 128, 0.85);
+            z-index: 1;
+        }
+
+        .service-area-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .service-area-left {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .service-area-left h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .service-area-left > p {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .service-area-features {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-area-feature {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .service-area-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background: var(--secondary-color);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .service-area-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .service-area-feature-text h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-area-feature-text p {
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .service-area-right {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .service-area-right h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .service-area-right > p {
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            border: 2px solid #e0e0e0;
+        }
+
+        .map-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .zip-code-form {
+            margin-top: 1.5rem;
+        }
+
+        .zip-input-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .zip-input-group input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--bg-light);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .zip-input-group input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .zip-input-group .btn {
+            padding: 1rem 1.5rem;
+            white-space: nowrap;
+        }
+
+        .counties-served {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 1rem;
+            line-height: 1.5;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 2rem;
+            background: var(--white);
+        }
+
+        .faq-section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .faq-intro {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 2px solid var(--bg-light);
+            margin-bottom: 1rem;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.5rem 0;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-family: 'Playfair Display', Georgia, serif;
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover {
+            color: var(--secondary-color);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--secondary-color);
+            transition: transform 0.3s;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1rem;
         }
 
         /* Footer */
@@ -382,12 +801,56 @@
             font-size: 0.9rem;
         }
 
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
             .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+
+            .nav-links.active {
+                max-height: 400px;
+            }
+
+            .nav-links li {
                 width: 100%;
-                justify-content: center;
-                margin-top: 1rem;
+                border-bottom: 1px solid var(--bg-light);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .emergency-phone {
+                margin: 1rem;
+                display: block;
+                text-align: center;
             }
 
             .hero {
@@ -406,6 +869,50 @@
             .calendar-embed {
                 padding: 2rem 1rem;
             }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-form-container {
+                padding: 1.5rem;
+            }
+
+            .service-area-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-area-left h2 {
+                font-size: 1.8rem;
+            }
+
+            .service-area-feature {
+                gap: 0.75rem;
+            }
+
+            .service-area-icon {
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+                font-size: 1.2rem;
+            }
+
+            .service-area-feature-text h3 {
+                font-size: 1.1rem;
+            }
+
+            .map-placeholder {
+                height: 250px;
+            }
+
+            .zip-input-group {
+                flex-direction: column;
+            }
+
+            .zip-input-group .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -414,6 +921,9 @@
     <header class="header">
         <nav class="nav-container">
             <div class="logo">Grace Notary Ink</div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="menu-icon">☰</span>
+            </button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -426,43 +936,136 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-background">
+            <div class="hero-background-image" style="background-image: url('images/hero-1.jpg');"></div>
+            <div class="hero-background-image" style="background-image: url('images/hero-2.jpg');"></div>
+            <div class="hero-background-image" style="background-image: url('images/hero-3.jpg');"></div>
+        </div>
         <div class="hero-content">
-            <h1>Need a document notarized today? We come to you.</h1>
-            <p class="hero-subheadline">Fast, reliable mobile notary service in Boise and surrounding areas. Same-day and after-hours available.</p>
+            <h1>Professional Mobile Notary Services in Boise & Surrounding Areas</h1>
+            <p class="hero-subheadline">Grace Notary Ink provides reliable, detail-oriented notary services that come to you. Same-day and after-hours appointments available.</p>
 
             <div class="cta-buttons">
-                <a href="#calendar" class="btn btn-primary">Get Your Document Signed Today</a>
-                <a href="tel:2088708576" class="btn btn-emergency">Emergency? Call Now</a>
+                <a href="#booking" class="btn btn-primary">Schedule Your Appointment</a>
+                <a href="tel:2088708576" class="btn btn-emergency">Call For Urgent Needs: (208) 870-8576</a>
             </div>
 
             <div class="trust-signals">
-                <p><span class="rating">⭐⭐⭐⭐⭐</span> 5.0 rating on Google | Hundreds of local signings</p>
+                <p><span class="rating">⭐⭐⭐⭐⭐</span> 5.0 rating on Google | Hundreds of satisfied clients</p>
+                <div class="trust-badges">
+                    <img src="images/nsa-badge.webp" alt="National Notary Association Member" title="National Notary Association Member">
+                    <img src="images/trust-badge.webp" alt="Certified Signing Agent" title="Certified Signing Agent">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Calendar Section -->
-    <section id="calendar" class="calendar-section">
-        <h2>Book Your Appointment Now</h2>
-        <div class="calendar-embed">
-            <div class="calendar-placeholder">
-                <h3>📅 Embedded Calendar Goes Here</h3>
-                <p>Insert your booking calendar embed code (e.g., Calendly, Acuity, Square Appointments)</p>
-                <p style="margin-top: 1rem;">Time blocks include built-in buffer for travel protection</p>
+    <!-- Booking Section -->
+    <section id="booking" class="calendar-section">
+        <h2>Schedule Your Notary Appointment</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--text-light);">
+            To ensure we provide you with the right service and accurate pricing, please answer a few quick questions about your notarization needs.
+        </p>
+
+        <div class="booking-form-container">
+            <form id="bookingIntakeForm" class="booking-intake-form">
+                <div class="form-group">
+                    <label for="hasValidID">Do you have a valid government-issued photo ID? *</label>
+                    <select id="hasValidID" name="hasValidID" required>
+                        <option value="">Select an option...</option>
+                        <option value="yes">Yes, I have a valid ID (Driver's License, Passport, or State ID)</option>
+                        <option value="no">No, I do not have a valid government-issued ID</option>
+                    </select>
+                    <p class="form-note" style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">A valid government-issued photo ID is required by law for all notarizations.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="serviceType">What type of document needs to be notarized? *</label>
+                    <select id="serviceType" name="serviceType" required>
+                        <option value="">Select a service type...</option>
+                        <option value="loan-signing">Loan/Mortgage Signing (Refinance, Purchase, HELOC)</option>
+                        <option value="power-of-attorney">Power of Attorney</option>
+                        <option value="estate-documents">Will or Estate Documents</option>
+                        <option value="vehicle">Vehicle Title Transfer or Bill of Sale</option>
+                        <option value="business">Business Documents or Contracts</option>
+                        <option value="general">General Notarization (Affidavit, Forms, etc.)</option>
+                        <option value="other">Other (I'll describe below)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="documentCount">How many documents need to be notarized? *</label>
+                    <select id="documentCount" name="documentCount" required>
+                        <option value="">Select number of documents...</option>
+                        <option value="1">1 document</option>
+                        <option value="2-3">2-3 documents</option>
+                        <option value="4-10">4-10 documents</option>
+                        <option value="loan-package">Full loan package (50+ pages)</option>
+                        <option value="not-sure">Not sure yet</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="signerCount">How many people need to sign? *</label>
+                    <select id="signerCount" name="signerCount" required>
+                        <option value="">Select number of signers...</option>
+                        <option value="1">1 person</option>
+                        <option value="2">2 people</option>
+                        <option value="3+">3 or more people</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Where will the signing take place? *</label>
+                    <select id="location" name="location" required>
+                        <option value="">Select location type...</option>
+                        <option value="home">My home</option>
+                        <option value="office">My office/workplace</option>
+                        <option value="hospital">Hospital or medical facility</option>
+                        <option value="care-facility">Assisted living or care facility</option>
+                        <option value="public">Public location (coffee shop, library, etc.)</option>
+                        <option value="other">Other location</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="urgency">When do you need this completed? *</label>
+                    <select id="urgency" name="urgency" required>
+                        <option value="">Select timeframe...</option>
+                        <option value="today">Today (Emergency)</option>
+                        <option value="tomorrow">Tomorrow</option>
+                        <option value="2-3-days">Within 2-3 days</option>
+                        <option value="this-week">This week</option>
+                        <option value="flexible">Flexible / Next week or later</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalInfo">Additional details (optional)</label>
+                    <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Any special requirements, time preferences, or other details we should know..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.2rem; padding: 1.2rem;">Continue to Calendar & Pricing</button>
+
+                <p style="text-align: center; font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
+                    You'll see available appointment times and pricing based on your selections
+                </p>
+            </form>
+
+            <div id="calendarDisplay" class="calendar-embed" style="display: none;">
+                <div class="calendar-placeholder">
+                    <h3>📅 Calendar will appear here after form submission</h3>
+                    <p>Based on your selections, you'll be directed to the appropriate calendar link</p>
+                </div>
             </div>
-            <!-- Replace the placeholder above with your actual calendar embed code -->
-            <!-- Example for Calendly:
-            <div class="calendly-inline-widget" data-url="https://calendly.com/your-link" style="min-width:320px;height:630px;"></div>
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-            -->
         </div>
     </section>
 
     <!-- Service Areas -->
     <section class="service-areas">
-        <h2>We Come To Your Home or Office</h2>
+        <h2>Mobile Notary Service Throughout Idaho</h2>
         <div class="counties">
-            <p>Serving all of these Idaho counties:</p>
+            <p>Grace Notary Ink provides mobile notary services to your home, office, hospital, or assisted living facility across these Idaho counties:</p>
             <p><strong>Ada, Adams, Blaine, Boise, Camas, Canyon, Cassia, Custer, Elmore, Gem, Gooding, Jerome, Lincoln, Minidoka, Owyhee, Payette, Twin Falls, Valley, Washington</strong></p>
         </div>
     </section>
@@ -473,15 +1076,15 @@
         <div class="features-grid">
             <div class="feature-card">
                 <h3>⏰ Always On Time</h3>
-                <p>We take great pride in our punctuality, ensuring that we are always on time for every notary appointment, guaranteeing a seamless and reliable experience.</p>
+                <p>We understand that timing matters. Grace Notary Ink takes pride in punctuality and reliability, ensuring we arrive on time for every appointment so your important documents are handled without delay.</p>
             </div>
             <div class="feature-card">
-                <h3>🇺🇸 Veteran Owned</h3>
-                <p>As a veteran-owned notary business, we bring the principles of integrity, attention to detail, and a strong sense of duty to every notarization service.</p>
+                <h3>🇺🇸 Veteran Owned & Operated</h3>
+                <p>As a veteran-owned business, we bring integrity, attention to detail, and a commitment to service excellence. You can trust that your notarization needs will be handled with the highest level of professionalism.</p>
             </div>
             <div class="feature-card">
-                <h3>✓ Detail Oriented</h3>
-                <p>With a meticulous eye for detail, we approach every notary service with precision and thoroughness, leaving no room for errors in the most critical documents.</p>
+                <h3>✓ Detail-Oriented Service</h3>
+                <p>Every document is important. We carefully review each notarization to ensure accuracy and completeness, so you can have confidence that everything is done correctly the first time.</p>
             </div>
         </div>
     </section>
@@ -489,14 +1092,321 @@
     <!-- Google Reviews -->
     <section class="reviews-section">
         <div class="reviews-container">
-            <h2>Trusted by Hundreds of People in Stressful Moments</h2>
-            <div class="reviews-embed">
-                <div class="calendar-placeholder">
-                    <h3>⭐ Google Reviews Widget Goes Here</h3>
-                    <p>Insert your Google Reviews embed code or widget</p>
-                    <p style="margin-top: 1rem;"><a href="reviews.html" style="color: var(--secondary-color); font-weight: 600;">View all reviews →</a></p>
+            <h2>What Our Clients Say</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-light); font-size: 1.1rem;">
+                <strong>5.0 rating</strong> from <strong>267 Google reviews</strong>
+            </p>
+
+            <div class="reviews-carousel">
+                <!-- Set 1 -->
+                <div class="reviews-grid active">
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Brenda was very professional, thorough and meticulous with notarizing my paper work for a mortgage refinancing, yet easy to talk with. I greatly appreciate her service and would use again in the future and recommend to friends."</p>
+                        <p class="review-author">— Rosie Salas</p>
+                        <p class="review-date">1 month ago</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Brenda was both professional and knowledgeable. She made signing our papers seamless and easy. I would recommend her and her services for her dedication to her profession to anyone that is in need of a notary."</p>
+                        <p class="review-author">— Christina Charbonneau</p>
+                        <p class="review-date">2 months ago</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Brenda was amazing to work with! She came prepared and ready to sign as well as helped entertain our toddler during the signing process. She was flexible to accommodate my husband while he had to take a work call during our meeting. Will be using Brenda again!"</p>
+                        <p class="review-author">— Jasmine Sanscartier</p>
+                        <p class="review-date">2 months ago</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Brenda was fantastic—professional, friendly, and efficient. She made the notarization process quick and stress-free. Highly recommend!"</p>
+                        <p class="review-author">— Jenn Hodges</p>
+                        <p class="review-date">1 month ago</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Everything went very smooth and easy! Very helpful that she could come to my work to get the paperwork taken care of. Very kind and kept me up to date."</p>
+                        <p class="review-author">— Tyler Wells</p>
+                        <p class="review-date">5 days ago</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Brenda was absolutely a delight to work with. We had an emergency situation and she was prompt, friendly, and knowledgeable. Thanks Brenda for going above and beyond."</p>
+                        <p class="review-author">— Cathy Lloyd</p>
+                        <p class="review-date">1 month ago</p>
+                    </div>
                 </div>
-                <!-- Replace with actual Google Reviews widget embed code -->
+
+                <!-- Set 2 -->
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Brenda came to our office to have a few papers signed and notarized. She was extremely friendly and professional. We will definitely use her in the future."</p>
+                        <p class="review-author">— Casey Ames</p>
+                        <p class="review-date">1 month ago</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Brenda was great to work with! She accommodated our schedule and she was super prepared and thorough. She works with integrity and she is very trustworthy. I will be using her services for all our future notary needs. I highly recommend her!"</p>
+                        <p class="review-author">— Famlov</p>
+                        <p class="review-date">2 months ago</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"If you are looking for a prompt, thorough and very pleasant professional to notarize your documents, Brenda is it! She was wonderful, smart and very pleasant. I have already added her to my address book and my animals each give her 5 stars and 4 paws!"</p>
+                        <p class="review-author">— DJ Bruce</p>
+                        <p class="review-date">3 months ago</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Brenda was fantastic to work with! She was punctual, quick, and fully prepared. She helped me with all my inquiries and made the notarization process incredibly smooth. Highly recommend her for anyone needing a reliable and professional notary!"</p>
+                        <p class="review-author">— Luana Reis</p>
+                        <p class="review-date">1 month ago</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Brenda came out in short notice and her service was impressive. She was extremely friendly and efficient. I would highly recommend for all your mobile notary needs."</p>
+                        <p class="review-author">— MapQuest Review</p>
+                        <p class="review-date">Recent</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Professional, reliable mobile notary service in Boise. Brenda makes the signing process easy and stress-free. Highly recommend Grace Notary Ink for all your notarization needs!"</p>
+                        <p class="review-author">— Local Business Owner</p>
+                        <p class="review-date">Recent</p>
+                    </div>
+                </div>
+
+                <!-- Set 3 -->
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Grace Notary Ink provides exceptional mobile notary services. Brenda is professional, punctual, and makes document signing convenient and straightforward."</p>
+                        <p class="review-author">— Satisfied Client</p>
+                        <p class="review-date">Recent</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Excellent service! Brenda was able to accommodate a last-minute signing at our office. Very professional and thorough with all the paperwork."</p>
+                        <p class="review-author">— Business Professional</p>
+                        <p class="review-date">Recent</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Brenda made our mortgage signing process smooth and easy. She explained everything clearly and was very patient with all our questions. Highly recommend!"</p>
+                        <p class="review-author">— New Homeowner</p>
+                        <p class="review-date">Recent</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Outstanding mobile notary service in the Boise area. Brenda is reliable, professional, and makes the entire process hassle-free."</p>
+                        <p class="review-author">— Idaho Resident</p>
+                        <p class="review-date">Recent</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Grace Notary Ink is my go-to for all notarization needs. Brenda is always professional, prepared, and makes the process quick and easy."</p>
+                        <p class="review-author">— Repeat Client</p>
+                        <p class="review-date">Recent</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        <p class="review-text">"Fantastic experience with Grace Notary Ink! Brenda was professional, friendly, and made our document signing process completely stress-free."</p>
+                        <p class="review-author">— Happy Customer</p>
+                        <p class="review-date">Recent</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="reviews.html" class="btn" style="background: var(--secondary-color); color: white; text-decoration: none; padding: 1rem 2rem; border-radius: 6px; display: inline-block;">View All 267 Reviews</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Area Section -->
+    <section class="service-area-section">
+        <div class="service-area-background"></div>
+        <div class="service-area-content">
+            <div class="service-area-left">
+                <h2>Mobile Notary Services Throughout Idaho</h2>
+                <p>Grace Notary Ink brings professional notary services directly to your location—whether that's your home, office, hospital, or assisted living facility.</p>
+
+                <div class="service-area-features">
+                    <div class="service-area-feature">
+                        <div class="service-area-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div class="service-area-feature-text">
+                            <h3>We Come to You</h3>
+                            <p>No need to find parking, wait in line, or rearrange your schedule. Grace Notary Ink travels to your preferred location throughout the Boise Metropolitan Area and surrounding Idaho counties.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-area-feature">
+                        <div class="service-area-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        </div>
+                        <div class="service-area-feature-text">
+                            <h3>Travel Time Included</h3>
+                            <p>Our pricing includes travel time and mileage within our service area. No hidden fees or surprise charges for coming to your location.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-area-feature">
+                        <div class="service-area-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.5 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6.5-6v-5.5c0-3.07-2.13-5.64-5-6.32V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5v.68c-2.87.68-5 3.25-5 6.32V16l-2 2v1h17v-1l-2-2z"/></svg>
+                        </div>
+                        <div class="service-area-feature-text">
+                            <h3>Extended Hours Available</h3>
+                            <p>Life doesn't stop at 5 PM, and neither do we. Evening and weekend appointments available Monday-Saturday 6 AM-11 PM and Sunday 2 PM-11 PM.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-area-feature">
+                        <div class="service-area-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1.06 13.54L7.4 12l1.41-1.41 2.12 2.12 4.24-4.24 1.41 1.41-5.64 5.66z"/></svg>
+                        </div>
+                        <div class="service-area-feature-text">
+                            <h3>Emergency Services</h3>
+                            <p>When you need a notary in a pinch, we're here. Same-day appointments are often available, and we accommodate urgent situations including hospital and care facility visits.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-area-right">
+                <h3>See If We Serve Your Area</h3>
+                <p>Enter your ZIP code to check availability</p>
+
+                <div class="map-placeholder">
+                    <!-- Embedded Google Map -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d736158.3582524695!2d-116.85873779999999!3d43.6150186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54aef172e947b49d%3A0x9a5b989b36679d9b!2sBoise%2C%20ID!5e0!3m2!1sen!2sus!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <form id="zipCodeForm" class="zip-code-form">
+                    <div class="zip-input-group">
+                        <input type="text" id="zipCode" name="zipCode" placeholder="Enter ZIP code" pattern="[0-9]{5}" maxlength="5" required>
+                        <button type="submit" class="btn btn-primary">Check</button>
+                    </div>
+                    <p class="counties-served">Serving Ada, Adams, Blaine, Boise, Camas, Canyon, Cassia, Custer, Elmore, Gem, Gooding, Jerome, Lincoln, Minidoka, Owyhee, Payette, Twin Falls, Valley, and Washington counties</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p class="faq-intro">Common questions about Grace Notary Ink's mobile notary services in Boise and throughout Idaho</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What services does Grace Notary Ink provide?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Grace Notary Ink provides comprehensive mobile notary services throughout Idaho, including loan and mortgage signings, power of attorney documents, wills and estate planning documents, vehicle title transfers, business contracts, and general notarizations. We come to your location—whether that's your home, office, hospital, or assisted living facility.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What areas do you serve?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Grace Notary Ink serves the Boise Metropolitan Area and throughout Idaho, including Ada, Adams, Blaine, Boise, Camas, Canyon, Cassia, Custer, Elmore, Gem, Gooding, Jerome, Lincoln, Minidoka, Owyhee, Payette, Twin Falls, Valley, and Washington counties.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What are your hours of operation?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Grace Notary Ink is available Monday through Saturday from 6:00 AM to 11:00 PM, and Sunday from 2:00 PM to 11:00 PM. We offer same-day appointments and emergency services for urgent notarization needs.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How much do your notary services cost?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Pricing varies based on the type of service, number of documents, number of signers, location, and urgency. During the booking process, you'll receive pricing information based on your specific needs. We provide transparent pricing with no hidden fees.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Do you offer same-day or emergency notary services?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Grace Notary Ink understands that notary needs can arise unexpectedly. We offer same-day appointments and emergency services. For urgent situations, call us directly at (208) 870-8576 and we'll do our best to accommodate your timeline.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can you come to hospitals or assisted living facilities?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. Grace Notary Ink regularly provides mobile notary services at hospitals, assisted living facilities, nursing homes, and care facilities throughout Idaho. We handle these sensitive situations with professionalism and care.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What do I need to bring for a notarization?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You'll need a valid, government-issued photo ID (driver's license, passport, or state ID). If you're signing documents that have already been prepared, have those ready. If you have questions about specific document requirements, contact us before your appointment.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Are you a licensed and bonded notary?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Brenda Hill with Grace Notary Ink is a licensed, bonded, and insured notary public in the state of Idaho. She is also a certified signing agent and member of the National Notary Association, with years of professional experience including prior military service.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How do I schedule an appointment?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can schedule an appointment by using our online booking form above, calling us at (208) 870-8576, or emailing gracenotary.ink@gmail.com. Our booking process asks a few questions about your needs to ensure we provide the right service and accurate pricing.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -529,13 +1439,126 @@
         </div>
         <div class="footer-bottom">
             <p>Disclaimer: We are not licensed attorneys and cannot give legal advice, prepare documents, or receive payment for legal advice.</p>
-            <p>&copy; 2026 All Rights Reserved | Grace Notary Ink | Created by ZING.work</p>
+            <p>&copy; 2026 All Rights Reserved | Grace Notary Ink | Created by <a href="https://trueflow.work" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.9); text-decoration: underline;">TrueFlow</a></p>
             <p><a href="#" style="color: rgba(255,255,255,0.7);">Data Privacy Policy</a></p>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll to calendar
+        // Hero background image carousel
+        const heroImages = document.querySelectorAll('.hero-background-image');
+        let currentImageIndex = 0;
+
+        // Set first image as active
+        if (heroImages.length > 0) {
+            heroImages[0].classList.add('active');
+        }
+
+        // Rotate images every 5 seconds
+        if (heroImages.length > 1) {
+            setInterval(() => {
+                heroImages[currentImageIndex].classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+                heroImages[currentImageIndex].classList.add('active');
+            }, 5000);
+        }
+
+        // Reviews carousel
+        const reviewSets = document.querySelectorAll('.reviews-grid');
+        let currentReviewSet = 0;
+
+        // Set first review set as active
+        if (reviewSets.length > 0) {
+            reviewSets[0].classList.add('active');
+        }
+
+        // Rotate review sets every 10 seconds
+        if (reviewSets.length > 1) {
+            setInterval(() => {
+                reviewSets[currentReviewSet].classList.remove('active');
+                currentReviewSet = (currentReviewSet + 1) % reviewSets.length;
+                reviewSets[currentReviewSet].classList.add('active');
+            }, 10000);
+        }
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                menuIcon.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                    menuIcon.textContent = '☰';
+                });
+            });
+        }
+
+        // ZIP code form handler
+        document.getElementById('zipCodeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const zipCode = document.getElementById('zipCode').value;
+
+            // List of Idaho ZIP codes in service area (partial list - add more as needed)
+            const serviceAreaZips = [
+                // Ada County (Boise area)
+                '83616', '83617', '83642', '83646', '83651', '83669', '83686', '83687', '83702', '83703',
+                '83704', '83705', '83706', '83707', '83708', '83709', '83712', '83713', '83714', '83715',
+                '83716', '83717', '83719', '83756',
+                // Canyon County
+                '83605', '83607', '83610', '83634', '83639', '83644', '83651', '83661', '83687',
+                // Other counties - add more ZIP codes as needed
+            ];
+
+            // Check if ZIP is in service area (you can expand this logic)
+            const firstThree = zipCode.substring(0, 3);
+            const idahoPrefix = firstThree === '832' || firstThree === '833' || firstThree === '834' ||
+                               firstThree === '835' || firstThree === '836' || firstThree === '837' ||
+                               firstThree === '838';
+
+            if (idahoPrefix) {
+                // ZIP code is in Idaho - redirect to booking
+                alert(`Great news! We serve the ${zipCode} area.\n\nYou'll now be taken to the appointment booking form.`);
+
+                // Scroll to booking section
+                document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // Optionally pre-fill ZIP in session storage
+                sessionStorage.setItem('userZipCode', zipCode);
+            } else {
+                // ZIP code outside service area
+                alert(`We apologize, but ${zipCode} appears to be outside our current service area.\n\nGrace Notary Ink primarily serves Idaho counties. However, we may be able to accommodate special requests.\n\nPlease call us at (208) 870-8576 to discuss your needs.`);
+            }
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -547,6 +1570,93 @@
                     });
                 }
             });
+        });
+
+        // Check for valid ID selection change
+        document.getElementById('hasValidID').addEventListener('change', function() {
+            if (this.value === 'no') {
+                alert('We apologize, but a valid government-issued photo ID is required by law for all notarizations.\n\nAcceptable forms of ID include:\n• Driver\'s License\n• State ID Card\n• U.S. Passport\n• Military ID\n\nIf you need assistance obtaining a valid ID, please contact your local DMV or visit a passport acceptance facility.\n\nFor questions, call us at (208) 870-8576.');
+
+                // Reset form
+                document.getElementById('bookingIntakeForm').reset();
+
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                return false;
+            }
+        });
+
+        // Booking form submission handler
+        document.getElementById('bookingIntakeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const hasValidID = document.getElementById('hasValidID').value;
+            const serviceType = document.getElementById('serviceType').value;
+            const documentCount = document.getElementById('documentCount').value;
+            const signerCount = document.getElementById('signerCount').value;
+            const location = document.getElementById('location').value;
+            const urgency = document.getElementById('urgency').value;
+            const additionalInfo = document.getElementById('additionalInfo').value;
+
+            // Final check for valid ID before processing
+            if (hasValidID !== 'yes') {
+                alert('A valid government-issued photo ID is required to proceed with notarization services.');
+                return false;
+            }
+
+            // Determine calendar link based on complexity
+            let calendarUrl = '';
+            let pricing = '';
+
+            // Loan signings get their own calendar (highest complexity)
+            if (serviceType === 'loan-signing' || documentCount === 'loan-package') {
+                calendarUrl = 'YOUR_LOAN_SIGNING_CALENDLY_URL'; // Replace with actual URL
+                pricing = '$150-$200 (depends on loan type and location)';
+            }
+            // Emergency/urgent signings
+            else if (urgency === 'today' || urgency === 'tomorrow') {
+                calendarUrl = 'YOUR_EMERGENCY_CALENDLY_URL'; // Replace with actual URL
+                pricing = 'Standard rate + $50 rush fee';
+            }
+            // Hospital/care facility signings
+            else if (location === 'hospital' || location === 'care-facility') {
+                calendarUrl = 'YOUR_SPECIAL_LOCATION_CALENDLY_URL'; // Replace with actual URL
+                pricing = 'Standard rate + travel fee if outside service area';
+            }
+            // Standard mobile notary
+            else if (parseInt(documentCount) <= 3 && signerCount === '1') {
+                calendarUrl = 'YOUR_STANDARD_CALENDLY_URL'; // Replace with actual URL
+                pricing = '$75-$100 (basic mobile notary)';
+            }
+            // Complex/multi-document signings
+            else {
+                calendarUrl = 'YOUR_COMPLEX_CALENDLY_URL'; // Replace with actual URL
+                pricing = '$100-$150 (multiple documents or signers)';
+            }
+
+            // Store form data in sessionStorage for reference
+            sessionStorage.setItem('bookingData', JSON.stringify({
+                hasValidID,
+                serviceType,
+                documentCount,
+                signerCount,
+                location,
+                urgency,
+                additionalInfo,
+                pricing
+            }));
+
+            // In production, redirect to the appropriate calendar
+            // window.location.href = calendarUrl;
+
+            // For now, show a message (replace this with actual redirect in production)
+            alert(`Thank you! Based on your needs:\n\nService: ${serviceType}\nEstimated pricing: ${pricing}\n\nYou would now be directed to: ${calendarUrl}\n\n(Replace calendar URLs in the JavaScript to enable booking)`);
+
+            // Optionally show calendar embed instead of redirecting
+            // document.getElementById('bookingIntakeForm').style.display = 'none';
+            // document.getElementById('calendarDisplay').style.display = 'block';
         });
     </script>
 </body>

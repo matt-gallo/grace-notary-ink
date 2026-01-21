@@ -7,7 +7,7 @@
     <title>Services | Grace Notary Ink</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -17,20 +17,28 @@
         }
 
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #2c5282;
-            --accent-color: #c53030;
-            --text-dark: #2d3748;
-            --text-light: #718096;
-            --bg-light: #f7fafc;
+            --primary-color: #5dade2;
+            --secondary-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
             --white: #ffffff;
+            --charcoal: #34495e;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', Georgia, serif;
         }
 
         /* Header / Navigation */
@@ -78,7 +86,7 @@
         }
 
         .emergency-phone {
-            background: var(--accent-color);
+            background: var(--secondary-color);
             color: var(--white);
             padding: 0.5rem 1.5rem;
             border-radius: 4px;
@@ -89,7 +97,7 @@
         }
 
         .emergency-phone:hover {
-            background: #9b2c2c;
+            background: #2980b9;
             transform: translateY(-2px);
         }
 
@@ -238,7 +246,7 @@
 
         /* Emergency Banner */
         .emergency-banner {
-            background: var(--accent-color);
+            background: var(--primary-color);
             color: var(--white);
             padding: 2rem;
             text-align: center;
@@ -248,11 +256,13 @@
         .emergency-banner h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: var(--white);
         }
 
         .emergency-banner p {
             font-size: 1.1rem;
             margin-bottom: 1rem;
+            color: var(--white);
         }
 
         /* Footer */
@@ -299,12 +309,56 @@
             font-size: 0.9rem;
         }
 
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
             .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+
+            .nav-links.active {
+                max-height: 400px;
+            }
+
+            .nav-links li {
                 width: 100%;
-                justify-content: center;
-                margin-top: 1rem;
+                border-bottom: 1px solid var(--bg-light);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .emergency-phone {
+                margin: 1rem;
+                display: block;
+                text-align: center;
             }
 
             .service-block {
@@ -318,6 +372,9 @@
     <header class="header">
         <nav class="nav-container">
             <a href="index.html" class="logo">Grace Notary Ink</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="menu-icon">☰</span>
+            </button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -330,13 +387,13 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>Notary Services Built for Urgency</h1>
-        <p>Most people call a notary because something suddenly became urgent. We're built for that.</p>
+        <h1>Professional Notary Services in Boise & Throughout Idaho</h1>
+        <p>Mobile notary services that come to you, with same-day and after-hours availability</p>
     </section>
 
     <!-- Intro -->
     <section class="intro-section">
-        <p>When you need documents notarized, time is usually working against you. We specialize in fast, reliable mobile notary services that come to you—whether it's your home, office, hospital, or assisted living facility.</p>
+        <p>Grace Notary Ink provides reliable mobile notary services throughout Idaho. Whether you need a document notarized at your home, office, hospital, or assisted living facility, we bring professional notary services directly to you.</p>
     </section>
 
     <!-- Services -->
@@ -344,129 +401,133 @@
 
         <!-- Loan & Title Documents -->
         <div class="service-block">
-            <h2>📄 Loan & Title Documents</h2>
-            <p class="service-meta">For: Homebuyers, Refinancers, Real Estate Agents</p>
-            <p>Closing on a home or refinancing? We handle all mortgage signings with precision and expertise, ensuring every document is executed correctly the first time.</p>
+            <h2>📄 Loan & Mortgage Signing Services</h2>
+            <p class="service-meta">For: Homebuyers, Refinancers, Real Estate Professionals</p>
+            <p>Grace Notary Ink provides professional loan signing services for purchase closings, refinances, and other real estate transactions. As a detail-oriented notary signing agent, we ensure that all mortgage documents are properly executed and returned to title companies and lenders on time.</p>
 
             <div class="service-features">
                 <h4>What We Handle:</h4>
                 <ul>
                     <li>Purchase closings</li>
                     <li>Refinance packages</li>
-                    <li>HELOCs and reverse mortgages</li>
+                    <li>Home equity lines of credit (HELOCs)</li>
+                    <li>Reverse mortgages</li>
                     <li>Title transfers</li>
-                    <li>Same-day and after-hours signings</li>
+                    <li>Same-day and after-hours signings available</li>
                 </ul>
             </div>
 
-            <p><strong>How fast we can help:</strong> We offer same-day appointments and can accommodate urgent closings, even outside regular business hours.</p>
+            <p><strong>Availability:</strong> We understand that closing schedules can be tight. Grace Notary Ink offers same-day appointments and can accommodate urgent closings, including evenings and weekends.</p>
 
             <div class="cta-box">
-                <p><strong>Need this handled today?</strong></p>
-                <a href="index.html#calendar" class="btn btn-white">Book Now</a>
+                <p><strong>Ready to schedule your loan signing?</strong></p>
+                <a href="index.html#booking" class="btn btn-white">Schedule Appointment</a>
                 <a href="tel:2088708576" class="btn btn-white">Call: (208) 870-8576</a>
             </div>
         </div>
 
         <!-- Power of Attorney -->
         <div class="service-block">
-            <h2>✍️ Power of Attorney</h2>
+            <h2>✍️ Power of Attorney Documents</h2>
             <p class="service-meta">For: Families, Caregivers, Estate Planning</p>
-            <p>When someone needs legal authority to act on behalf of another person, time-sensitive power of attorney documents must be notarized correctly.</p>
+            <p>Power of attorney documents give someone legal authority to act on behalf of another person. These important documents must be properly notarized to be valid. Grace Notary Ink handles these sensitive situations with professionalism and care.</p>
 
             <div class="service-features">
                 <h4>What We Handle:</h4>
                 <ul>
                     <li>General power of attorney</li>
                     <li>Durable power of attorney</li>
-                    <li>Healthcare power of attorney</li>
-                    <li>Limited power of attorney</li>
-                    <li>Hospital and assisted living signings</li>
+                    <li>Healthcare power of attorney (medical decisions)</li>
+                    <li>Limited or special power of attorney</li>
+                    <li>Hospital and assisted living facility signings</li>
                 </ul>
             </div>
 
-            <p><strong>How fast we can help:</strong> We understand these situations are often urgent. We can meet you at hospitals, care facilities, or homes—often same day.</p>
+            <p><strong>Availability:</strong> We understand these situations often arise unexpectedly. Grace Notary Ink can meet you at hospitals, care facilities, or private homes, with same-day appointments often available.</p>
 
             <div class="cta-box">
-                <p><strong>Get this handled today</strong></p>
-                <a href="index.html#calendar" class="btn btn-white">Book Now</a>
+                <p><strong>Need assistance with power of attorney documents?</strong></p>
+                <a href="index.html#booking" class="btn btn-white">Schedule Appointment</a>
                 <a href="tel:2088708576" class="btn btn-white">Call: (208) 870-8576</a>
             </div>
         </div>
 
         <!-- Wills & Estate Documents -->
         <div class="service-block">
-            <h2>📋 Wills & Estate Documents</h2>
-            <p class="service-meta">For: Estate Planning, Family Preparation</p>
-            <p>Protecting your family's future requires properly notarized estate planning documents. We handle these sensitive matters with care and professionalism.</p>
+            <h2>📋 Wills & Estate Planning Documents</h2>
+            <p class="service-meta">For: Estate Planning, Families, Financial Planning</p>
+            <p>Proper estate planning protects your family's future and ensures your wishes are carried out. Grace Notary Ink provides professional notarization services for wills, trusts, and other estate planning documents, handling these important matters with care and attention to detail.</p>
 
             <div class="service-features">
                 <h4>What We Handle:</h4>
                 <ul>
                     <li>Last will and testament</li>
                     <li>Living wills</li>
-                    <li>Trust documents</li>
+                    <li>Trust documents and amendments</li>
                     <li>Healthcare directives</li>
                     <li>Advance directives</li>
+                    <li>Beneficiary designations</li>
                 </ul>
             </div>
 
-            <p><strong>How fast we can help:</strong> We can schedule appointments at your convenience, including evening and weekend availability.</p>
+            <p><strong>Availability:</strong> We work around your schedule, with evening and weekend appointments available for your convenience.</p>
 
             <div class="cta-box">
-                <p><strong>Schedule your estate planning signing</strong></p>
-                <a href="index.html#calendar" class="btn btn-white">Book Now</a>
+                <p><strong>Ready to handle your estate planning documents?</strong></p>
+                <a href="index.html#booking" class="btn btn-white">Schedule Appointment</a>
                 <a href="tel:2088708576" class="btn btn-white">Call: (208) 870-8576</a>
             </div>
         </div>
 
         <!-- Vehicle & Business Paperwork -->
         <div class="service-block">
-            <h2>🚗 Vehicle & Business Paperwork</h2>
-            <p class="service-meta">For: Car Buyers/Sellers, Business Owners</p>
-            <p>Auto transfers, business contracts, and financial documents often need notarization to complete transactions. We make the process quick and seamless.</p>
+            <h2>🚗 Vehicle Transfers & Business Documents</h2>
+            <p class="service-meta">For: Car Buyers/Sellers, Business Owners, Contractors</p>
+            <p>Whether you're buying or selling a vehicle, finalizing a business contract, or handling other important paperwork, Grace Notary Ink provides fast, accurate notarization services to keep your transactions moving forward.</p>
 
             <div class="service-features">
                 <h4>What We Handle:</h4>
                 <ul>
                     <li>Auto title transfers</li>
-                    <li>Vehicle bill of sale</li>
-                    <li>Business contracts</li>
+                    <li>Vehicle bills of sale</li>
+                    <li>Business contracts and agreements</li>
                     <li>Financial agreements</li>
                     <li>Affidavits and sworn statements</li>
+                    <li>Commercial documents</li>
                 </ul>
             </div>
 
-            <p><strong>How fast we can help:</strong> Most vehicle and business documents can be handled same-day with our mobile service.</p>
+            <p><strong>Availability:</strong> Most vehicle and business documents can be notarized same-day. We understand deadlines matter in business transactions.</p>
 
             <div class="cta-box">
-                <p><strong>Get your paperwork done today</strong></p>
-                <a href="index.html#calendar" class="btn btn-white">Book Now</a>
+                <p><strong>Need business or vehicle documents notarized?</strong></p>
+                <a href="index.html#booking" class="btn btn-white">Schedule Appointment</a>
                 <a href="tel:2088708576" class="btn btn-white">Call: (208) 870-8576</a>
             </div>
         </div>
 
         <!-- After-Hours & Emergency -->
         <div class="service-block">
-            <h2>🚨 After-Hours & Emergency Requests</h2>
-            <p class="service-meta">For: Anyone with urgent, time-sensitive needs</p>
-            <p>We understand that notary needs don't always happen during business hours. That's why we offer extended availability and emergency services.</p>
+            <h2>🚨 After-Hours & Emergency Notary Services</h2>
+            <p class="service-meta">For: Urgent or Time-Sensitive Notarization Needs</p>
+            <p>Grace Notary Ink understands that important documents don't always arrive during regular business hours. That's why we offer extended availability and emergency notary services throughout the Boise area and surrounding Idaho counties.</p>
 
             <div class="service-features">
                 <h4>When We're Available:</h4>
                 <ul>
-                    <li>Monday - Saturday: 6:00 AM - 11:00 PM</li>
-                    <li>Sunday: 2:00 PM - 11:00 PM</li>
-                    <li>Same-day appointments</li>
-                    <li>Emergency services available</li>
-                    <li>Hospital and care facility visits</li>
+                    <li><strong>Monday - Saturday:</strong> 6:00 AM - 11:00 PM</li>
+                    <li><strong>Sunday:</strong> 2:00 PM - 11:00 PM</li>
+                    <li>Same-day appointments available</li>
+                    <li>Emergency services for urgent situations</li>
+                    <li>Hospital and care facility visits any day</li>
+                    <li>Weekend and holiday availability</li>
                 </ul>
             </div>
 
-            <p><strong>How fast we can help:</strong> Call us directly for emergency requests. We'll do everything we can to accommodate urgent situations.</p>
+            <p><strong>How It Works:</strong> If you have an urgent notarization need, call us directly at (208) 870-8576. We'll do our best to accommodate your timeline and location requirements.</p>
 
             <div class="cta-box">
-                <p><strong>Emergency? We're here to help.</strong></p>
+                <p><strong>Have an urgent notary need?</strong></p>
                 <a href="tel:2088708576" class="btn btn-white">Call Emergency Line: (208) 870-8576</a>
             </div>
         </div>
@@ -475,10 +536,10 @@
 
     <!-- Emergency Banner -->
     <section class="emergency-banner">
-        <h3>Don't See What You're Looking For?</h3>
-        <p>We handle many types of notarizations beyond what's listed here.</p>
-        <p>Call us directly or use the contact form for immediate assistance.</p>
+        <h3>Need Help or Have Questions?</h3>
+        <p>Grace Notary Ink handles many types of notarizations beyond what's listed here. If you're not sure what you need or have special requirements, we're here to help.</p>
         <a href="contact.html" class="btn btn-white">Contact Us</a>
+        <a href="tel:2088708576" class="btn btn-white">Call (208) 870-8576</a>
     </section>
 
     <!-- Footer -->
@@ -510,9 +571,31 @@
         </div>
         <div class="footer-bottom">
             <p>Disclaimer: We are not licensed attorneys and cannot give legal advice, prepare documents, or receive payment for legal advice.</p>
-            <p>&copy; 2026 All Rights Reserved | Grace Notary Ink | Created by ZING.work</p>
+            <p>&copy; 2026 All Rights Reserved | Grace Notary Ink | Created by <a href="https://trueflow.work" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.9); text-decoration: underline;">TrueFlow</a></p>
             <p><a href="#" style="color: rgba(255,255,255,0.7);">Data Privacy Policy</a></p>
         </div>
     </footer>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                menuIcon.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                    menuIcon.textContent = '☰';
+                });
+            });
+        }
+    </script>
 </body>
 </html>
