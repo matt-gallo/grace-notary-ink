@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "Grace Notary Ink - Mobile Notary Services Website",
   "scripts": {
-    "start": "npx serve -s . -l 3000"
+    "start": "node server.js"
   },
   "keywords": [
     "notary",
@@ -11,8 +11,5 @@
     "idaho"
   ],
   "author": "ZING.work",
-  "license": "UNLICENSED",
-  "dependencies": {
-    "serve": "^14.2.1"
-  }
+  "license": "UNLICENSED"
 }
