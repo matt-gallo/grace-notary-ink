@@ -287,7 +287,7 @@
         /* Booking Section */
         .calendar-section {
             padding: 4rem 2rem;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -296,6 +296,15 @@
             text-align: center;
             margin-bottom: 1.5rem;
             color: var(--primary-color);
+        }
+
+        .service-selector {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .booking-form-container {
@@ -964,99 +973,33 @@
     <section id="booking" class="calendar-section">
         <h2>Schedule Your Notary Appointment</h2>
         <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--text-light);">
-            To ensure we provide you with the right service and accurate pricing, please answer a few quick questions about your notarization needs.
+            Choose your service type below to see available appointment times.
         </p>
 
         <div class="booking-form-container">
-            <form id="bookingIntakeForm" class="booking-intake-form">
+            <!-- Service Selector -->
+            <div id="serviceSelector" class="service-selector">
                 <div class="form-group">
-                    <label for="hasValidID">Do you have a valid government-issued photo ID? *</label>
-                    <select id="hasValidID" name="hasValidID" required>
-                        <option value="">Select an option...</option>
-                        <option value="yes">Yes, I have a valid ID (Driver's License, Passport, or State ID)</option>
-                        <option value="no">No, I do not have a valid government-issued ID</option>
-                    </select>
-                    <p class="form-note" style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">A valid government-issued photo ID is required by law for all notarizations.</p>
-                </div>
-
-                <div class="form-group">
-                    <label for="serviceType">What type of document needs to be notarized? *</label>
-                    <select id="serviceType" name="serviceType" required>
+                    <label for="serviceType" style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; display: block; text-align: center;">What type of service do you need?</label>
+                    <select id="serviceType" name="serviceType" required style="font-size: 1.1rem; padding: 1rem;">
                         <option value="">Select a service type...</option>
-                        <option value="loan-signing">Loan/Mortgage Signing (Refinance, Purchase, HELOC)</option>
-                        <option value="power-of-attorney">Power of Attorney</option>
-                        <option value="estate-documents">Will or Estate Documents</option>
-                        <option value="vehicle">Vehicle Title Transfer or Bill of Sale</option>
-                        <option value="business">Business Documents or Contracts</option>
-                        <option value="general">General Notarization (Affidavit, Forms, etc.)</option>
-                        <option value="other">Other (I'll describe below)</option>
+                        <option value="standard">Standard Notarization (Wills, POA, Affidavits, Vehicle Docs, etc.)</option>
+                        <option value="loan">Loan Signing or Large Document Set</option>
                     </select>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="documentCount">How many documents need to be notarized? *</label>
-                    <select id="documentCount" name="documentCount" required>
-                        <option value="">Select number of documents...</option>
-                        <option value="1">1 document</option>
-                        <option value="2-3">2-3 documents</option>
-                        <option value="4-10">4-10 documents</option>
-                        <option value="loan-package">Full loan package (50+ pages)</option>
-                        <option value="not-sure">Not sure yet</option>
-                    </select>
-                </div>
+            <!-- Calendar Display Areas -->
+            <div id="calendar-standard" class="calendar-embed" style="display: none; margin-top: 2rem;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Standard Notary Service (30 minutes)</h3>
+                <iframe src="https://api.leadconnectorhq.com/widget/booking/YHFVKEmruniVKsBMCSO3" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="YHFVKEmruniVKsBMCSO3_1769209270168"></iframe>
+                <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+            </div>
 
-                <div class="form-group">
-                    <label for="signerCount">How many people need to sign? *</label>
-                    <select id="signerCount" name="signerCount" required>
-                        <option value="">Select number of signers...</option>
-                        <option value="1">1 person</option>
-                        <option value="2">2 people</option>
-                        <option value="3+">3 or more people</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="location">Where will the signing take place? *</label>
-                    <select id="location" name="location" required>
-                        <option value="">Select location type...</option>
-                        <option value="home">My home</option>
-                        <option value="office">My office/workplace</option>
-                        <option value="hospital">Hospital or medical facility</option>
-                        <option value="care-facility">Assisted living or care facility</option>
-                        <option value="public">Public location (coffee shop, library, etc.)</option>
-                        <option value="other">Other location</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="urgency">When do you need this completed? *</label>
-                    <select id="urgency" name="urgency" required>
-                        <option value="">Select timeframe...</option>
-                        <option value="today">Today (Emergency)</option>
-                        <option value="tomorrow">Tomorrow</option>
-                        <option value="2-3-days">Within 2-3 days</option>
-                        <option value="this-week">This week</option>
-                        <option value="flexible">Flexible / Next week or later</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="additionalInfo">Additional details (optional)</label>
-                    <textarea id="additionalInfo" name="additionalInfo" rows="4" placeholder="Any special requirements, time preferences, or other details we should know..."></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.2rem; padding: 1.2rem;">Continue to Calendar & Pricing</button>
-
-                <p style="text-align: center; font-size: 0.9rem; color: var(--text-light); margin-top: 1rem;">
-                    You'll see available appointment times and pricing based on your selections
-                </p>
-            </form>
-
-            <div id="calendarDisplay" class="calendar-embed" style="display: none;">
-                <div class="calendar-placeholder">
-                    <h3>📅 Calendar will appear here after form submission</h3>
-                    <p>Based on your selections, you'll be directed to the appropriate calendar link</p>
-                </div>
+            <div id="calendar-loan" class="calendar-embed" style="display: none; margin-top: 2rem;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Loan Signing Service (60 minutes)</h3>
+                <iframe src="https://api.leadconnectorhq.com/widget/booking/S2TQggkuy9y4S9hO7dFX" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="S2TQggkuy9y4S9hO7dFX_1769214819577"></iframe>
+                <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
             </div>
         </div>
     </section>
@@ -1587,76 +1530,30 @@
             }
         });
 
-        // Booking form submission handler
-        document.getElementById('bookingIntakeForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Service type selector handler - show appropriate calendar
+        document.getElementById('serviceType').addEventListener('change', function() {
+            const serviceType = this.value;
+            const standardCalendar = document.getElementById('calendar-standard');
+            const loanCalendar = document.getElementById('calendar-loan');
 
-            // Get form values
-            const hasValidID = document.getElementById('hasValidID').value;
-            const serviceType = document.getElementById('serviceType').value;
-            const documentCount = document.getElementById('documentCount').value;
-            const signerCount = document.getElementById('signerCount').value;
-            const location = document.getElementById('location').value;
-            const urgency = document.getElementById('urgency').value;
-            const additionalInfo = document.getElementById('additionalInfo').value;
+            // Hide both calendars first
+            standardCalendar.style.display = 'none';
+            loanCalendar.style.display = 'none';
 
-            // Final check for valid ID before processing
-            if (hasValidID !== 'yes') {
-                alert('A valid government-issued photo ID is required to proceed with notarization services.');
-                return false;
+            // Show the appropriate calendar based on selection
+            if (serviceType === 'standard') {
+                standardCalendar.style.display = 'block';
+                // Smooth scroll to calendar
+                setTimeout(() => {
+                    standardCalendar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            } else if (serviceType === 'loan') {
+                loanCalendar.style.display = 'block';
+                // Smooth scroll to calendar
+                setTimeout(() => {
+                    loanCalendar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
             }
-
-            // Determine calendar link based on complexity
-            let calendarUrl = '';
-            let pricing = '';
-
-            // Loan signings get their own calendar (highest complexity)
-            if (serviceType === 'loan-signing' || documentCount === 'loan-package') {
-                calendarUrl = 'YOUR_LOAN_SIGNING_CALENDLY_URL'; // Replace with actual URL
-                pricing = '$150-$200 (depends on loan type and location)';
-            }
-            // Emergency/urgent signings
-            else if (urgency === 'today' || urgency === 'tomorrow') {
-                calendarUrl = 'YOUR_EMERGENCY_CALENDLY_URL'; // Replace with actual URL
-                pricing = 'Standard rate + $50 rush fee';
-            }
-            // Hospital/care facility signings
-            else if (location === 'hospital' || location === 'care-facility') {
-                calendarUrl = 'YOUR_SPECIAL_LOCATION_CALENDLY_URL'; // Replace with actual URL
-                pricing = 'Standard rate + travel fee if outside service area';
-            }
-            // Standard mobile notary
-            else if (parseInt(documentCount) <= 3 && signerCount === '1') {
-                calendarUrl = 'YOUR_STANDARD_CALENDLY_URL'; // Replace with actual URL
-                pricing = '$75-$100 (basic mobile notary)';
-            }
-            // Complex/multi-document signings
-            else {
-                calendarUrl = 'YOUR_COMPLEX_CALENDLY_URL'; // Replace with actual URL
-                pricing = '$100-$150 (multiple documents or signers)';
-            }
-
-            // Store form data in sessionStorage for reference
-            sessionStorage.setItem('bookingData', JSON.stringify({
-                hasValidID,
-                serviceType,
-                documentCount,
-                signerCount,
-                location,
-                urgency,
-                additionalInfo,
-                pricing
-            }));
-
-            // In production, redirect to the appropriate calendar
-            // window.location.href = calendarUrl;
-
-            // For now, show a message (replace this with actual redirect in production)
-            alert(`Thank you! Based on your needs:\n\nService: ${serviceType}\nEstimated pricing: ${pricing}\n\nYou would now be directed to: ${calendarUrl}\n\n(Replace calendar URLs in the JavaScript to enable booking)`);
-
-            // Optionally show calendar embed instead of redirecting
-            // document.getElementById('bookingIntakeForm').style.display = 'none';
-            // document.getElementById('calendarDisplay').style.display = 'block';
         });
     </script>
 </body>
