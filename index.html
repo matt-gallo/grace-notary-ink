@@ -299,12 +299,22 @@
         }
 
         .service-selector {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto 2rem;
             padding: 2rem;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .service-button:hover {
+            background: #2980b9 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+        }
+
+        .service-button:active {
+            transform: translateY(0);
         }
 
         .booking-form-container {
@@ -975,21 +985,28 @@
 
     <!-- Booking Section -->
     <section id="booking" class="calendar-section">
-        <h2>Schedule Your Notary Appointment</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--text-light);">
+        <h2>Book Your Appointment</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 1rem; color: var(--text-dark); font-size: 1.1rem;">
             Choose your service type below to see available appointment times.
+        </p>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: var(--text-light); font-size: 0.95rem;">
+            <strong>Minimum scheduling time: 3 hours in advance.</strong><br>
+            Last-minute appointments available for an additional fee.
         </p>
 
         <div class="booking-form-container">
             <!-- Service Selector -->
             <div id="serviceSelector" class="service-selector">
-                <div class="form-group">
-                    <label for="serviceType" style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; display: block; text-align: center;">What type of service do you need?</label>
-                    <select id="serviceType" name="serviceType" required style="font-size: 1.1rem; padding: 1rem;">
-                        <option value="">Select a service type...</option>
-                        <option value="standard">Standard Notarization (Wills, POA, Affidavits, Vehicle Docs, etc.)</option>
-                        <option value="loan">Loan Signing or Large Document Set</option>
-                    </select>
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; text-align: center; color: var(--text-dark);">What type of service do you need?</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <button type="button" id="selectStandard" class="service-button" style="flex: 1; min-width: 250px; padding: 1.5rem; background: var(--secondary-color); color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        Standard Notarization<br>
+                        <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.9;">Wills, POA, Affidavits, Vehicle Docs, etc.</span>
+                    </button>
+                    <button type="button" id="selectLoan" class="service-button" style="flex: 1; min-width: 250px; padding: 1.5rem; background: var(--secondary-color); color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        Loan Signing<br>
+                        <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.9;">Large Document Set</span>
+                    </button>
                 </div>
             </div>
 
@@ -1519,45 +1536,37 @@
             });
         });
 
-        // Check for valid ID selection change
-        document.getElementById('hasValidID').addEventListener('change', function() {
-            if (this.value === 'no') {
-                alert('We apologize, but a valid government-issued photo ID is required by law for all notarizations.\n\nAcceptable forms of ID include:\n• Driver\'s License\n• State ID Card\n• U.S. Passport\n• Military ID\n\nIf you need assistance obtaining a valid ID, please contact your local DMV or visit a passport acceptance facility.\n\nFor questions, call us at (208) 870-8576.');
-
-                // Reset form
-                document.getElementById('bookingIntakeForm').reset();
-
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-
-                return false;
-            }
-        });
-
-        // Service type selector handler - show appropriate calendar
-        document.getElementById('serviceType').addEventListener('change', function() {
-            const serviceType = this.value;
+        // Service type button handlers - show appropriate calendar
+        document.getElementById('selectStandard').addEventListener('click', function() {
             const standardCalendar = document.getElementById('calendar-standard');
             const loanCalendar = document.getElementById('calendar-loan');
 
-            // Hide both calendars first
-            standardCalendar.style.display = 'none';
+            // Hide loan calendar
             loanCalendar.style.display = 'none';
 
-            // Show the appropriate calendar based on selection
-            if (serviceType === 'standard') {
-                standardCalendar.style.display = 'block';
-                // Smooth scroll to calendar
-                setTimeout(() => {
-                    standardCalendar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 100);
-            } else if (serviceType === 'loan') {
-                loanCalendar.style.display = 'block';
-                // Smooth scroll to calendar
-                setTimeout(() => {
-                    loanCalendar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 100);
-            }
+            // Show standard calendar
+            standardCalendar.style.display = 'block';
+
+            // Smooth scroll to calendar
+            setTimeout(() => {
+                standardCalendar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        });
+
+        document.getElementById('selectLoan').addEventListener('click', function() {
+            const standardCalendar = document.getElementById('calendar-standard');
+            const loanCalendar = document.getElementById('calendar-loan');
+
+            // Hide standard calendar
+            standardCalendar.style.display = 'none';
+
+            // Show loan calendar
+            loanCalendar.style.display = 'block';
+
+            // Smooth scroll to calendar
+            setTimeout(() => {
+                loanCalendar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
         });
     </script>
 </body>
