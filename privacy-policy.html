@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy Policy for Grace Notary Ink - How we collect, use, and protect your personal information.">
+    <title>Privacy Policy | Grace Notary Ink</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #5dade2;
+            --secondary-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --charcoal: #34495e;
+        }
+
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        /* Header / Navigation */
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .emergency-phone {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .emergency-phone:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .content-section h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section h3 {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin-bottom: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .contact-info {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+
+            .nav-links.active {
+                max-height: 400px;
+            }
+
+            .nav-links li {
+                width: 100%;
+                border-bottom: 1px solid var(--bg-light);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .emergency-phone {
+                margin: 1rem;
+                display: block;
+                text-align: center;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 0 1rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Grace Notary Ink</div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="menu-icon">☰</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:2088708576" class="emergency-phone">Emergency Notary Line: (208) 870-8576</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Data Privacy Policy</h1>
+        <p>Last updated: February 2, 2026</p>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+        <h2>Privacy Policy</h2>
+        <p>Grace Notary Ink is committed to ensuring that your privacy is protected. This privacy policy sets out how Grace Notary Ink collects, uses, protects, and safeguards any information that you provide when you use this website or our services.</p>
+
+        <p>Should we ask you to provide certain information by which you can be identified when using this website or our services, you can be assured that it will only be used in accordance with this privacy statement.</p>
+
+        <p>Grace Notary Ink may change this policy from time to time by updating this page. You should check this page periodically to ensure that you are satisfied with any changes.</p>
+
+        <h2>What Information We Collect</h2>
+        <p>We may collect the following information:</p>
+        <ul>
+            <li>Name and contact information</li>
+            <li>Email address</li>
+            <li>Phone number (mobile and/or landline)</li>
+            <li>Demographic information such as ZIP code, preferences, and interests</li>
+            <li>Address and location information for mobile notary service delivery</li>
+            <li>Identity verification information (as required for notarization services)</li>
+            <li>Other information relevant to customer surveys, service delivery, and/or promotional offers</li>
+        </ul>
+
+        <h2>How We Use the Information We Gather</h2>
+        <p>We require this information to understand your needs and provide you with better service, and in particular for the following reasons:</p>
+        <ul>
+            <li>Internal record keeping</li>
+            <li>Scheduling and coordinating mobile notary appointments</li>
+            <li>Providing notary services and fulfilling legal requirements</li>
+            <li>Improving our products and services</li>
+            <li>Sending service-related communications via email, SMS, or phone</li>
+            <li>Sending promotional emails about new products, special offers, or other information which we think you may find interesting</li>
+            <li>Contacting you for appointment confirmations, reminders, and follow-ups</li>
+            <li>Conducting market research and gathering customer feedback</li>
+            <li>Customizing the website according to your interests</li>
+        </ul>
+
+        <div class="highlight-box">
+            <h3>SMS and Voice Call Communications</h3>
+            <p><strong>By providing your phone number to Grace Notary Ink, you expressly consent to receive communications from us via:</strong></p>
+            <ul>
+                <li>SMS text messages</li>
+                <li>Voice calls (including automated/pre-recorded calls)</li>
+                <li>MMS multimedia messages</li>
+            </ul>
+
+            <h4 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">Types of Messages You May Receive:</h4>
+            <ul>
+                <li><strong>Transactional Messages:</strong> Appointment confirmations, reminders, schedule changes, service updates, and other messages related to the notary services you've requested</li>
+                <li><strong>Marketing Messages:</strong> Promotional offers, special discounts, service announcements, and other marketing communications (only if you have opted in)</li>
+                <li><strong>Customer Service:</strong> Follow-up communications, satisfaction surveys, and service-related inquiries</li>
+            </ul>
+
+            <h4 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">Important SMS/Voice Call Information:</h4>
+            <ul>
+                <li><strong>Message Frequency:</strong> Message frequency varies based on your service requests and communication preferences. You may receive appointment reminders, confirmations, and occasional promotional messages.</li>
+                <li><strong>Message and Data Rates:</strong> Standard message and data rates may apply based on your mobile carrier's plan. Grace Notary Ink does not charge for text messages, but your carrier may.</li>
+                <li><strong>Opt-Out Instructions:</strong> You may opt out of receiving SMS messages at any time by replying STOP to any text message or by contacting us at gracenotary.ink@gmail.com or (208) 870-8576. Please note that opting out of marketing messages will not affect transactional messages necessary for service delivery.</li>
+                <li><strong>Help:</strong> For help or more information, reply HELP to any message or contact us at gracenotary.ink@gmail.com</li>
+                <li><strong>Carrier Liability:</strong> Carriers are not liable for delayed or undelivered messages.</li>
+                <li><strong>Supported Carriers:</strong> Our SMS service is available on all major U.S. carriers including AT&T, Verizon, T-Mobile, Sprint, and others.</li>
+            </ul>
+
+            <p style="margin-top: 1rem;"><strong>We will never share your phone number with third parties for their marketing purposes.</strong> Your phone number is used solely for Grace Notary Ink service communications and appointment coordination.</p>
+        </div>
+
+        <h2>Security</h2>
+        <p>We are committed to ensuring that your information is secure. In order to prevent unauthorized access or disclosure, we have put in place suitable physical, electronic, and managerial procedures to safeguard and secure the information we collect online and in the course of providing notary services.</p>
+
+        <p>These security measures include:</p>
+        <ul>
+            <li>Secure data storage and encryption</li>
+            <li>Limited access to personal information on a need-to-know basis</li>
+            <li>Regular security assessments and updates</li>
+            <li>Compliance with Idaho notary public laws and regulations regarding record-keeping and confidentiality</li>
+        </ul>
+
+        <h2>How We Use Cookies</h2>
+        <p>A cookie is a small file that asks permission to be placed on your computer's hard drive. Once you agree, the file is added and the cookie helps analyze web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes, and dislikes by gathering and remembering information about your preferences.</p>
+
+        <p>We may use traffic log cookies to identify which pages are being used. This helps us analyze data about webpage traffic and improve our website in order to tailor it to customer needs. We only use this information for statistical analysis purposes and then the data is removed from the system.</p>
+
+        <p>Overall, cookies help us provide you with a better website experience, by enabling us to monitor which pages you find useful and which you do not. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us.</p>
+
+        <p>Your web browser will allow you to choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website.</p>
+
+        <h2>Links to Other Websites</h2>
+        <p>Our website may contain links to other websites of interest. However, once you have used these links to leave our site, you should note that we do not have any control over that other website. Therefore, we cannot be responsible for the protection and privacy of any information which you provide whilst visiting such sites and such sites are not governed by this privacy statement. You should exercise caution and look at the privacy statement applicable to the website in question.</p>
+
+        <h2>Controlling Your Personal Information</h2>
+        <p>You may choose to restrict the collection or use of your personal information in the following ways:</p>
+
+        <ul>
+            <li>Whenever you are asked to fill in a form on the website, look for the box that you can click to indicate that you do not want the information to be used by anybody for direct marketing purposes</li>
+            <li>If you have previously agreed to us using your personal information for direct marketing purposes, you may change your mind at any time by emailing us at <a href="mailto:gracenotary.ink@gmail.com">gracenotary.ink@gmail.com</a> or calling (208) 870-8576</li>
+            <li>To opt out of SMS/text messages, reply STOP to any text message</li>
+            <li>To opt out of voice calls, inform us during the call or contact us at gracenotary.ink@gmail.com</li>
+        </ul>
+
+        <p><strong>We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law to do so.</strong> We may use your personal information to send you promotional information about third parties which we think you may find interesting if you tell us that you wish this to happen.</p>
+
+        <h2>Your Rights Regarding Your Personal Information</h2>
+        <p>You have the following rights regarding your personal information:</p>
+        <ul>
+            <li><strong>Right to Access:</strong> You may request details of personal information which we hold about you</li>
+            <li><strong>Right to Correction:</strong> If you believe that any information we are holding on you is incorrect or incomplete, please contact us as soon as possible</li>
+            <li><strong>Right to Deletion:</strong> You may request that we delete your personal information, subject to legal record-keeping requirements for notarial acts</li>
+            <li><strong>Right to Opt-Out:</strong> You may opt out of marketing communications at any time</li>
+        </ul>
+
+        <p>Please note that certain information related to notarial acts must be retained in accordance with Idaho state law and notary public regulations, even if you request deletion of other personal information.</p>
+
+        <h2>Data Retention</h2>
+        <p>Grace Notary Ink retains personal information for as long as necessary to provide our services and comply with legal obligations. Notarial records are maintained in accordance with Idaho state law requirements.</p>
+
+        <h2>Children's Privacy</h2>
+        <p>Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If you become aware that a child has provided us with personal information, please contact us immediately.</p>
+
+        <div class="contact-info">
+            <h3 style="color: white; margin-bottom: 1rem;">Contact Us About Your Privacy</h3>
+            <p>If you believe that any information we are holding on you is incorrect or incomplete, or if you have questions about this privacy policy, please write to or email us as soon as possible.</p>
+            <p><strong>Email:</strong> <a href="mailto:gracenotary.ink@gmail.com">gracenotary.ink@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:2088708576">(208) 870-8576</a></p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">We will promptly correct any information found to be incorrect and respond to your privacy inquiries within 30 days.</p>
+        </div>
+
+        <h2>Consent</h2>
+        <p>By using our website, booking our services, or providing us with your contact information, you consent to the collection and use of information as described in this privacy policy, including consent to receive communications via SMS, voice calls, and email as outlined above.</p>
+
+        <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--bg-light); font-size: 0.9rem; color: var(--text-light);">
+            <strong>Disclaimer:</strong> We are not licensed attorneys and cannot give legal advice, prepare legal documents, or receive payment for legal advice. Grace Notary Ink provides notary public services only.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Grace Notary Ink</h3>
+                <p>Mobile & Online Notary Services</p>
+                <p>Making Your Documents Official</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Emergency Line: (208) 870-8576</p>
+                <p>Email: gracenotary.ink@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Sunday: 2:00 PM - 11:00 PM</p>
+                <p>Monday - Saturday: 6:00 AM - 11:00 PM</p>
+                <p><strong>Available 7 Days a Week</strong></p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy-policy.html" style="color: rgba(255,255,255,1); text-decoration: underline;">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Disclaimer: We are not licensed attorneys and cannot give legal advice, prepare documents, or receive payment for legal advice.</p>
+            <p>&copy; 2026 All Rights Reserved | Grace Notary Ink | Created by <a href="https://trueflow.work" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.9); text-decoration: underline;">TrueFlow</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                menuIcon.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                    menuIcon.textContent = '☰';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
