@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Terms of Service for Grace Notary Ink - Mobile notary services in Boise and throughout Idaho.">
+    <title>Terms of Service | Grace Notary Ink</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #5dade2;
+            --secondary-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --charcoal: #34495e;
+        }
+
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        /* Header / Navigation */
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .emergency-phone {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .emergency-phone:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .content-section h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section h3 {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul, .content-section ol {
+            margin-bottom: 1.5rem;
+            margin-left: 2rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .contact-info {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+
+            .nav-links.active {
+                max-height: 500px;
+            }
+
+            .nav-links li {
+                width: 100%;
+                border-bottom: 1px solid var(--bg-light);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .emergency-phone {
+                margin: 1rem;
+                display: block;
+                text-align: center;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 0 1rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Grace Notary Ink</div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="menu-icon">☰</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="booking.html">Book Now</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:2088708576" class="emergency-phone">Emergency Notary Line: (208) 870-8576</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Terms of Service</h1>
+        <p>Last updated: February 2, 2026</p>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+        <h2>Agreement to Terms</h2>
+        <p>By accessing and using the services of Grace Notary Ink, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using our services.</p>
+
+        <h2>Services Provided</h2>
+        <p>Grace Notary Ink provides mobile notary public services throughout Idaho, including but not limited to:</p>
+        <ul>
+            <li>General notarizations (acknowledgments, jurats, copy certifications)</li>
+            <li>Loan signing services for mortgage and real estate transactions</li>
+            <li>Mobile notary services at your location (home, office, hospital, care facility)</li>
+            <li>Document witnessing and oath administration</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>Important Legal Disclaimer:</strong> Grace Notary Ink and its notaries are not licensed attorneys and cannot provide legal advice, prepare legal documents, or accept fees for legal advice. We provide notary public services only. If you have questions about the legal effect or validity of any document, consult with a licensed attorney.</p>
+        </div>
+
+        <h2>Appointment Scheduling and Cancellation</h2>
+
+        <h3>Scheduling Requirements</h3>
+        <ul>
+            <li><strong>Advance Notice:</strong> Appointments must be scheduled at least 3 hours in advance. Same-day or emergency appointments may be available for an additional fee.</li>
+            <li><strong>Accurate Information:</strong> You agree to provide accurate contact information, appointment location, and service details when booking.</li>
+            <li><strong>Travel Time:</strong> Our pricing includes reasonable travel time within our standard service area.</li>
+        </ul>
+
+        <h3>Cancellation Policy</h3>
+        <ul>
+            <li><strong>Client Cancellations:</strong> Appointments may be canceled or rescheduled up to 2 hours before the scheduled time without penalty. Cancellations with less than 2 hours notice may be subject to a cancellation fee.</li>
+            <li><strong>Late Arrivals:</strong> If you are more than 15 minutes late to the scheduled appointment, we reserve the right to reschedule and may charge a trip fee.</li>
+            <li><strong>No-Show Fee:</strong> Failure to be present at the scheduled appointment time and location without prior notice will result in a no-show fee equal to the full appointment cost.</li>
+            <li><strong>Grace Notary Ink Cancellations:</strong> In the event we must cancel an appointment, you will receive full notification and the opportunity to reschedule at no additional cost.</li>
+        </ul>
+
+        <h2>Fees and Payment</h2>
+
+        <h3>Pricing Structure</h3>
+        <p>Our fees are based on the following factors:</p>
+        <ul>
+            <li>Type of notarial service required</li>
+            <li>Number of documents and signatures</li>
+            <li>Number of signers</li>
+            <li>Location and travel distance</li>
+            <li>Appointment urgency (same-day, after-hours)</li>
+            <li>Day and time of service</li>
+        </ul>
+
+        <h3>Payment Terms</h3>
+        <ul>
+            <li><strong>Payment Due:</strong> Payment is due at the time of service unless other arrangements have been made in advance.</li>
+            <li><strong>Accepted Payment Methods:</strong> We accept cash, credit cards, debit cards, and electronic payment methods.</li>
+            <li><strong>No Refunds:</strong> Once notarial services have been performed, fees are non-refundable.</li>
+            <li><strong>Returned Payments:</strong> A fee will be charged for any returned or declined payments.</li>
+        </ul>
+
+        <h2>Client Responsibilities</h2>
+
+        <h3>Valid Identification</h3>
+        <p>You must present a valid, government-issued photo identification at the time of the appointment. Acceptable forms of ID include:</p>
+        <ul>
+            <li>Driver's license</li>
+            <li>State-issued ID card</li>
+            <li>U.S. passport or passport card</li>
+            <li>Military ID</li>
+        </ul>
+        <p><strong>Failure to provide acceptable identification will result in the notary being unable to perform services, and you will still be charged the trip fee.</strong></p>
+
+        <h3>Document Preparation</h3>
+        <ul>
+            <li>All documents must be complete and ready for signature. Notaries cannot fill in blank spaces or complete documents.</li>
+            <li>You are responsible for understanding the contents of any document you sign.</li>
+            <li>The notary will not notarize incomplete documents, blank forms, or documents with blank spaces that should be filled before signing.</li>
+        </ul>
+
+        <h3>Signer Presence and Willingness</h3>
+        <ul>
+            <li>All signers must be physically present before the notary at the time of notarization.</li>
+            <li>Signers must be of sound mind and signing willingly, without coercion.</li>
+            <li>The notary reserves the right to refuse service if the signer appears to be under duress, lacks capacity, or is otherwise unable to execute the document.</li>
+        </ul>
+
+        <h2>Limitation of Liability</h2>
+        <p>Grace Notary Ink's liability is limited to the maximum extent permitted by law. We are not responsible for:</p>
+        <ul>
+            <li>The legal effect or enforceability of any document notarized</li>
+            <li>The accuracy or completeness of information contained in documents</li>
+            <li>Errors in documents prepared by third parties</li>
+            <li>Rejection of documents by third parties or government agencies</li>
+            <li>Consequential, indirect, or incidental damages arising from our services</li>
+            <li>Delays caused by traffic, weather, or other circumstances beyond our control</li>
+        </ul>
+
+        <p><strong>Grace Notary Ink maintains errors and omissions insurance and a surety bond as required by Idaho state law.</strong></p>
+
+        <h2>Privacy and Confidentiality</h2>
+        <p>We are committed to protecting your privacy. Please review our <a href="privacy-policy.html" style="color: var(--secondary-color); text-decoration: underline;">Privacy Policy</a> for information on how we collect, use, and protect your personal information.</p>
+
+        <p>As a notary public, we are required by law to maintain a record (notary journal) of all notarial acts performed. This journal is confidential but may be subject to subpoena or review by government authorities.</p>
+
+        <h2>Prohibited Uses</h2>
+        <p>You agree not to use our services for any unlawful purpose or in any way that:</p>
+        <ul>
+            <li>Violates any local, state, or federal law or regulation</li>
+            <li>Involves fraudulent, false, or misleading documents</li>
+            <li>Attempts to defraud or deceive any person or entity</li>
+            <li>Harasses, abuses, or threatens our notaries or staff</li>
+            <li>Interferes with the proper performance of notarial duties</li>
+        </ul>
+
+        <h2>Professional Standards and Ethics</h2>
+        <p>Grace Notary Ink and all notaries associated with our business adhere to:</p>
+        <ul>
+            <li>Idaho notary public laws and regulations</li>
+            <li>The National Notary Association Code of Professional Responsibility</li>
+            <li>Signing Professionals Workgroup best practices</li>
+            <li>Highest standards of integrity, impartiality, and professional conduct</li>
+        </ul>
+
+        <p>Our notaries reserve the right to refuse any notarization that appears improper, illegal, or fraudulent.</p>
+
+        <h2>Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless Grace Notary Ink, its owner, employees, and agents from any claims, damages, losses, liabilities, and expenses (including reasonable attorney fees) arising from:</p>
+        <ul>
+            <li>Your use of our services</li>
+            <li>Your violation of these Terms of Service</li>
+            <li>Your violation of any rights of another person or entity</li>
+            <li>Any fraudulent or illegal documents presented for notarization</li>
+        </ul>
+
+        <h2>Modifications to Terms</h2>
+        <p>Grace Notary Ink reserves the right to modify these Terms of Service at any time. Changes will be effective immediately upon posting to our website. Your continued use of our services after any changes constitutes acceptance of the modified terms.</p>
+
+        <h2>Governing Law and Jurisdiction</h2>
+        <p>These Terms of Service are governed by and construed in accordance with the laws of the State of Idaho, without regard to its conflict of law provisions. Any disputes arising from these terms or our services shall be resolved in the courts of Ada County, Idaho.</p>
+
+        <h2>Severability</h2>
+        <p>If any provision of these Terms of Service is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that these Terms of Service will otherwise remain in full force and effect.</p>
+
+        <h2>Entire Agreement</h2>
+        <p>These Terms of Service, along with our Privacy Policy, constitute the entire agreement between you and Grace Notary Ink regarding the use of our services and supersede any prior agreements.</p>
+
+        <div class="contact-info">
+            <h3 style="color: white; margin-bottom: 1rem;">Questions About Our Terms?</h3>
+            <p>If you have any questions about these Terms of Service, please contact us:</p>
+            <p><strong>Email:</strong> <a href="mailto:gracenotary.ink@gmail.com">gracenotary.ink@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:2088708576">(208) 870-8576</a></p>
+        </div>
+
+        <p style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--bg-light); font-size: 0.9rem; color: var(--text-light);">
+            By booking an appointment or using Grace Notary Ink services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Grace Notary Ink</h3>
+                <p>Mobile & Online Notary Services</p>
+                <p>Making Your Documents Official</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Emergency Line: (208) 870-8576</p>
+                <p>Email: gracenotary.ink@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Sunday: 2:00 PM - 11:00 PM</p>
+                <p>Monday - Saturday: 6:00 AM - 11:00 PM</p>
+                <p><strong>Available 7 Days a Week</strong></p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="booking.html">Book Now</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html" style="color: rgba(255,255,255,1); text-decoration: underline;">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Disclaimer: We are not licensed attorneys and cannot give legal advice, prepare documents, or receive payment for legal advice.</p>
+            <p>&copy; 2026 All Rights Reserved | Grace Notary Ink | Created by <a href="https://trueflow.work" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.9); text-decoration: underline;">TrueFlow</a></p>
+            <p>
+                <a href="privacy-policy.html" style="color: rgba(255,255,255,0.7);">Privacy Policy</a> |
+                <a href="terms-of-service.html" style="color: rgba(255,255,255,0.7);">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                menuIcon.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                    menuIcon.textContent = '☰';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
