@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Book your standard notary appointment with Grace Notary Ink. Fast mobile notary service for wills, power of attorney, affidavits, vehicle documents, and more in Boise and Idaho.">
-    <meta name="keywords" content="book notary, schedule notary appointment, mobile notary booking, standard notarization, boise notary, idaho notary">
-    <title>Book Standard Notary Appointment | Grace Notary Ink</title>
+    <meta name="description" content="Book your notary appointment with Grace Notary Ink. Schedule standard notarizations or loan signings online. Fast mobile notary service in Boise and throughout Idaho.">
+    <meta name="keywords" content="book notary, schedule notary appointment, mobile notary booking, notarization appointment, boise notary, idaho notary">
+    <title>Book Appointment | Grace Notary Ink</title>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Book Standard Notary Appointment | Grace Notary Ink">
-    <meta property="og:description" content="Schedule your standard notarization appointment today. We come to you in Boise and throughout Idaho.">
-    <meta property="og:url" content="https://www.gracenotary-ink.com/booking-standard">
+    <meta property="og:title" content="Book Your Notary Appointment | Grace Notary Ink">
+    <meta property="og:description" content="Schedule your notarization appointment today. We come to you in Boise and throughout Idaho.">
+    <meta property="og:url" content="https://www.gracenotary-ink.com/booking">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -107,110 +107,76 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
-        .page-hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--primary-color);
             color: var(--white);
             padding: 3rem 2rem 2rem;
             text-align: center;
         }
 
-        .page-hero h1 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 700;
+        .page-header h1 {
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
 
-        .page-hero p {
+        .page-header p {
             font-size: 1.1rem;
+            opacity: 0.9;
             max-width: 700px;
             margin: 0 auto;
-            opacity: 0.95;
         }
 
         /* Booking Section */
-        .booking-section {
-            padding: 3rem 2rem;
-            max-width: 1200px;
+        .calendar-section {
+            padding: 4rem 2rem;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .booking-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .booking-info {
-            background: var(--bg-light);
+        .service-selector {
+            max-width: 800px;
+            margin: 0 auto 2rem;
             padding: 2rem;
-            border-radius: 8px;
-        }
-
-        .booking-info h2 {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .booking-info h3 {
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            margin: 1.5rem 0 0.75rem 0;
-        }
-
-        .booking-info p {
-            color: var(--text-dark);
-            line-height: 1.7;
-            margin-bottom: 0.75rem;
-        }
-
-        .booking-info ul {
-            list-style-position: inside;
-            color: var(--text-dark);
-            line-height: 1.7;
-            margin-bottom: 1rem;
-        }
-
-        .booking-info ul li {
-            margin-bottom: 0.3rem;
-        }
-
-        .highlight-box {
             background: white;
-            border-left: 4px solid var(--secondary-color);
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .highlight-box p {
-            margin: 0;
-            font-size: 0.95rem;
+        .service-button:hover {
+            background: #2980b9 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
         }
 
-        .calendar-container {
+        .service-button:active {
+            transform: translateY(0);
+        }
+
+        .booking-form-container {
             background: var(--white);
             border: 2px solid var(--bg-light);
-            padding: 2rem;
+            padding: 3rem;
             border-radius: 8px;
-            min-height: 700px;
-        }
-
-        .calendar-container h2 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            font-size: 1.5rem;
         }
 
         .calendar-embed {
             background: var(--bg-light);
-            padding: 1rem;
+            padding: 3rem;
             border-radius: 8px;
             text-align: center;
-            min-height: 650px;
+            min-height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -261,17 +227,6 @@
             font-size: 0.9rem;
         }
 
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .mobile-menu-toggle {
@@ -293,7 +248,7 @@
             }
 
             .nav-links.active {
-                max-height: 400px;
+                max-height: 500px;
             }
 
             .nav-links li {
@@ -313,17 +268,67 @@
                 text-align: center;
             }
 
-            .booking-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .page-header h1 {
+                font-size: 2rem;
             }
 
-            .calendar-container {
+            .booking-form-container {
                 padding: 1rem;
             }
 
-            .booking-info {
-                padding: 1.5rem;
+            .service-selector {
+                padding: 1.5rem 1rem;
+            }
+
+            .service-selector h3 {
+                font-size: 1.2rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+
+            .service-button {
+                min-width: 100% !important;
+                padding: 1.25rem !important;
+                font-size: 1rem !important;
+            }
+
+            .service-button span {
+                font-size: 0.85rem !important;
+            }
+
+            .calendar-section {
+                padding: 3rem 1rem;
+            }
+
+            .calendar-embed {
+                padding: 1.5rem 0.5rem;
+                min-height: 500px;
+            }
+
+            .calendar-embed iframe {
+                min-height: 600px;
+            }
+        }
+
+        @media (max-width: 374px) {
+            .service-selector {
+                padding: 1rem 0.75rem;
+            }
+
+            .service-selector h3 {
+                font-size: 1.1rem !important;
+            }
+
+            .service-button {
+                padding: 1rem !important;
+                font-size: 0.95rem !important;
+            }
+
+            .calendar-embed {
+                padding: 1rem 0.25rem;
+            }
+
+            .booking-form-container {
+                padding: 0.75rem;
             }
         }
     </style>
@@ -347,52 +352,49 @@
         </nav>
     </header>
 
-    <!-- Page Hero -->
-    <section class="page-hero">
-        <h1>Book Standard Notary Appointment</h1>
-        <p>We come to you anywhere in Boise and throughout Idaho.</p>
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Book Your Appointment</h1>
+        <p>Choose your service type below and schedule a time that works for you. Same-day and after-hours appointments available.</p>
     </section>
 
     <!-- Booking Section -->
-    <section class="booking-section">
-        <div class="booking-grid">
-            <!-- Info Column -->
-            <div class="booking-info">
-                <h2>Standard Notarization</h2>
-                <p><strong>30-minute appointment</strong></p>
+    <section class="calendar-section">
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 1rem; color: var(--text-dark); font-size: 1.1rem;">
+            Choose your service type below to see available appointment times.
+        </p>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: var(--text-light); font-size: 0.95rem;">
+            <strong>Minimum scheduling time: 3 hours in advance.</strong><br>
+            Last-minute appointments available for an additional fee.
+        </p>
 
-                <h3>Perfect For:</h3>
-                <ul>
-                    <li>Wills & Power of Attorney</li>
-                    <li>Affidavits & Sworn Statements</li>
-                    <li>Vehicle Title Transfers</li>
-                    <li>Real Estate Documents</li>
-                    <li>Business Contracts</li>
-                    <li>Passport Applications</li>
-                    <li>Medical Forms</li>
-                </ul>
-
-                <h3>What You Need:</h3>
-                <p>Bring a valid government-issued photo ID (driver's license, passport, or state ID).</p>
-
-                <h3>Scheduling:</h3>
-                <p>Book at least 3 hours in advance. Same-day appointments available for an extra fee.</p>
-
-                <div class="highlight-box">
-                    <p><strong>Urgent Need?</strong> Call us at <a href="tel:2088708576" style="color: var(--secondary-color); font-weight: 600;">(208) 870-8576</a></p>
+        <div class="booking-form-container">
+            <!-- Service Selector -->
+            <div id="serviceSelector" class="service-selector">
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; text-align: center; color: var(--text-dark);">What type of service do you need?</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                    <button type="button" id="selectStandard" class="service-button" style="flex: 1; min-width: 250px; padding: 1.5rem; background: var(--secondary-color); color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        Standard Notarization<br>
+                        <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.9;">Wills, POA, Affidavits, Vehicle Docs, etc.</span>
+                    </button>
+                    <button type="button" id="selectLoan" class="service-button" style="flex: 1; min-width: 250px; padding: 1.5rem; background: var(--secondary-color); color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        Loan Signing<br>
+                        <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.9;">Large Document Set</span>
+                    </button>
                 </div>
-
-                <h3>Mobile Service:</h3>
-                <p>We travel to your home, office, hospital, or care facility throughout Boise and Idaho counties.</p>
             </div>
 
-            <!-- Calendar Column -->
-            <div class="calendar-container">
-                <h2>Select Your Time</h2>
-                <div class="calendar-embed">
-                    <iframe src="https://api.leadconnectorhq.com/widget/booking/YHFVKEmruniVKsBMCSO3" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="YHFVKEmruniVKsBMCSO3_1769209270168"></iframe>
-                    <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
-                </div>
+            <!-- Calendar Display Areas -->
+            <div id="calendar-standard" class="calendar-embed" style="display: none; margin-top: 2rem;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Standard Notary Service (30 minutes)</h3>
+                <iframe src="https://api.leadconnectorhq.com/widget/booking/YHFVKEmruniVKsBMCSO3" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="YHFVKEmruniVKsBMCSO3_1769209270168"></iframe>
+                <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+            </div>
+
+            <div id="calendar-loan" class="calendar-embed" style="display: none; margin-top: 2rem;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Loan Signing Service (60 minutes)</h3>
+                <iframe src="https://api.leadconnectorhq.com/widget/booking/S2TQggkuy9y4S9hO7dFX" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="S2TQggkuy9y4S9hO7dFX_1769214819577"></iframe>
+                <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
             </div>
         </div>
     </section>
@@ -420,8 +422,10 @@
                 <h3>Quick Links</h3>
                 <a href="index.html">Home</a>
                 <a href="services.html">Services</a>
+                <a href="booking.html">Book Now</a>
                 <a href="reviews.html">Reviews</a>
                 <a href="contact.html">Contact Us</a>
+                <a href="privacy-policy.html" style="color: rgba(255,255,255,1); text-decoration: underline;">Privacy Policy</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -452,6 +456,39 @@
                 });
             });
         }
+
+        // Service type button handlers - show appropriate calendar
+        document.getElementById('selectStandard').addEventListener('click', function() {
+            const standardCalendar = document.getElementById('calendar-standard');
+            const loanCalendar = document.getElementById('calendar-loan');
+
+            // Hide loan calendar
+            loanCalendar.style.display = 'none';
+
+            // Show standard calendar
+            standardCalendar.style.display = 'block';
+
+            // Smooth scroll to calendar
+            setTimeout(() => {
+                standardCalendar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        });
+
+        document.getElementById('selectLoan').addEventListener('click', function() {
+            const standardCalendar = document.getElementById('calendar-standard');
+            const loanCalendar = document.getElementById('calendar-loan');
+
+            // Hide standard calendar
+            standardCalendar.style.display = 'none';
+
+            // Show loan calendar
+            loanCalendar.style.display = 'block';
+
+            // Smooth scroll to calendar
+            setTimeout(() => {
+                loanCalendar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        });
     </script>
 </body>
 </html>
