@@ -71,6 +71,7 @@
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--white);
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -874,6 +875,7 @@
 
             .hero {
                 padding: 3rem 1.5rem;
+                min-height: 400px;
             }
 
             .cta-buttons {
@@ -981,6 +983,11 @@
 
         /* Extra small devices (phones, less than 375px) */
         @media (max-width: 374px) {
+            .hero {
+                min-height: 350px;
+                padding: 2rem 1rem;
+            }
+
             .hero h1 {
                 font-size: 1.75rem;
             }
@@ -1001,6 +1008,8 @@
                 padding: 1rem !important;
                 font-size: 0.95rem !important;
                 min-height: 44px;
+                min-width: 100% !important;
+                flex: 1 1 100% !important;
             }
 
             .calendar-embed {
