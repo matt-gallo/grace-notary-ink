@@ -56,6 +56,12 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
         :root {
             --primary-color: #5dade2;
             --secondary-color: #3498db;
@@ -71,7 +77,6 @@
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--white);
-            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -191,6 +196,7 @@
 
         .hero-content {
             max-width: 800px;
+            width: 100%;
             margin: 0 auto;
             position: relative;
             z-index: 2;
@@ -226,6 +232,8 @@
             font-size: 1.1rem;
             transition: all 0.3s;
             display: inline-block;
+            word-wrap: break-word;
+            max-width: 100%;
         }
 
         .btn-primary {
@@ -876,6 +884,8 @@
             .hero {
                 padding: 3rem 1.5rem;
                 min-height: 0;
+                width: 100%;
+                max-width: 100vw;
             }
 
             .cta-buttons {
@@ -988,6 +998,8 @@
             .hero {
                 min-height: 0;
                 padding: 2.5rem 1rem;
+                width: 100%;
+                max-width: 100vw;
             }
 
             .hero h1 {
