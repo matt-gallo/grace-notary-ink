@@ -127,7 +127,7 @@
         }
 
         .page-header h1 {
-            font-size: 2.5rem;
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
             margin-bottom: 0.5rem;
         }
 
@@ -310,8 +310,12 @@
         }
 
         @media (max-width: 374px) {
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+
             .service-selector {
-                padding: 1rem 0.75rem;
+                padding: 1rem 1rem;
             }
 
             .service-selector h3 {
@@ -321,14 +325,20 @@
             .service-button {
                 padding: 1rem !important;
                 font-size: 0.95rem !important;
+                min-height: 44px;
             }
 
             .calendar-embed {
-                padding: 1rem 0.25rem;
+                padding: 1rem 0.5rem;
             }
 
             .booking-form-container {
                 padding: 0.75rem;
+            }
+
+            .btn {
+                min-height: 44px;
+                padding: 0.75rem 1.5rem;
             }
         }
     </style>
@@ -363,7 +373,7 @@
         <div style="max-width: 800px; margin: 0 auto; padding: 3rem 2rem;">
             <h2 style="text-align: center; font-size: 1.8rem; margin-bottom: 3rem; color: var(--text-dark);">What type of service do you need?</h2>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
                 <!-- Standard Notarization Card -->
                 <a href="booking-standard.html" style="text-decoration: none; color: inherit;">
                     <div style="background: white; border: 2px solid var(--bg-light); border-radius: 12px; padding: 2.5rem; text-align: center; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.1); cursor: pointer;"

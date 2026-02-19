@@ -318,7 +318,8 @@
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
-                width: 100%;
+                flex: 1 1 100%;
+                flex-wrap: wrap;
                 justify-content: center;
                 margin-top: 1rem;
             }
@@ -329,6 +330,26 @@
 
             .embed-instructions {
                 padding: 1.5rem;
+            }
+
+            .btn {
+                min-height: 44px;
+            }
+        }
+
+        /* Extra small devices (phones, less than 375px) */
+        @media (max-width: 374px) {
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+
+            .rating {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                min-height: 44px;
+                padding: 0.75rem 1.5rem;
             }
         }
     </style>
