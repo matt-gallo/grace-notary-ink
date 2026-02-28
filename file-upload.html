@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Upload your documents for printing services at Grace Notary INK. Fast, reliable document printing in Boise and surrounding Idaho areas.">
+    <meta name="keywords" content="document printing, file upload, print services, boise printing, idaho printing">
+    <title>File Upload for Printing | Grace Notary INK</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="File Upload for Printing | Grace Notary INK">
+    <meta property="og:description" content="Upload your documents for printing services at Grace Notary INK.">
+    <meta property="og:url" content="https://www.gracenotary-ink.com/file-upload.html">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary-color: #5dade2;
+            --secondary-color: #3498db;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --charcoal: #34495e;
+        }
+
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        /* Header / Navigation */
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .emergency-phone {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .emergency-phone:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* File Upload Section */
+        .file-upload-section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .upload-container {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .upload-intro {
+            padding: 2rem;
+            background: var(--bg-light);
+            text-align: center;
+        }
+
+        .upload-intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .upload-intro p {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .form-container {
+            padding: 2rem;
+            min-height: 1300px;
+        }
+
+        .form-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 1266px;
+            border: none;
+            border-radius: 3px;
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 3rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-card ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-card ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+
+            .nav-links.active {
+                max-height: 400px;
+            }
+
+            .nav-links li {
+                width: 100%;
+                border-bottom: 1px solid var(--bg-light);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .emergency-phone {
+                margin: 1rem;
+                display: block;
+                text-align: center;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .upload-intro h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Grace Notary INK</div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="menu-icon">☰</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="booking.html">Book Now</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:2088708576" class="emergency-phone">Emergency Notary Line: (208) 870-8576</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>File Upload for Printing</h1>
+        <p>Upload your documents securely and we'll handle your printing needs with care and precision.</p>
+    </section>
+
+    <!-- File Upload Section -->
+    <section class="file-upload-section">
+        <div class="upload-container">
+            <div class="upload-intro">
+                <h2>Upload Your Documents</h2>
+                <p>Use the form below to upload your files for printing. We support various file formats and ensure your documents are handled securely.</p>
+            </div>
+
+            <div class="form-container">
+                <iframe
+                    src="https://api.leadconnectorhq.com/widget/form/JIn06sf1BG5HANf2EDsp"
+                    style="width:100%;height:100%;border:none;border-radius:3px"
+                    id="inline-JIn06sf1BG5HANf2EDsp"
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-trigger-value=""
+                    data-activation-type="alwaysActivated"
+                    data-activation-value=""
+                    data-deactivation-type="neverDeactivate"
+                    data-deactivation-value=""
+                    data-form-name="File Upload for Printing form"
+                    data-height="1266"
+                    data-layout-iframe-id="inline-JIn06sf1BG5HANf2EDsp"
+                    data-form-id="JIn06sf1BG5HANf2EDsp"
+                    title="File Upload for Printing form">
+                </iframe>
+                <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="info-container">
+            <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 1rem; font-size: 2rem;">What You Need to Know</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem; font-size: 1.1rem;">Important information about our document printing services</p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Supported File Types</h3>
+                    <ul>
+                        <li>PDF documents (.pdf)</li>
+                        <li>Microsoft Word (.doc, .docx)</li>
+                        <li>Microsoft Excel (.xls, .xlsx)</li>
+                        <li>Images (.jpg, .png)</li>
+                        <li>Text files (.txt)</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Printing Options</h3>
+                    <ul>
+                        <li>Color or black & white</li>
+                        <li>Single or double-sided</li>
+                        <li>Various paper sizes</li>
+                        <li>Standard or premium paper</li>
+                        <li>Binding options available</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Next Steps</h3>
+                    <ul>
+                        <li>Upload your files using the form above</li>
+                        <li>We'll review your submission</li>
+                        <li>Receive a quote within 24 hours</li>
+                        <li>Approve and schedule pickup/delivery</li>
+                        <li>Get your professionally printed documents</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Grace Notary INK</h3>
+                <p>Mobile & Online Notary Services</p>
+                <p>Making Your Documents Official</p>
+                <p style="margin-top: 1rem;">2708 N Norman Drive<br>Boise, ID 83704</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Emergency Line: (208) 870-8576</p>
+                <p>Email: gracenotary.ink@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Sunday: 2:00 PM - 11:00 PM</p>
+                <p>Monday - Saturday: 6:00 AM - 11:00 PM</p>
+                <p><strong>Available 7 Days a Week</strong></p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="file-upload.html">File Upload</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Disclaimer: We are not licensed attorneys and cannot give legal advice, prepare documents, or receive payment for legal advice.</p>
+            <p>&copy; 2026 All Rights Reserved | Grace Notary INK | Created by <a href="https://trueflow.work" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.9); text-decoration: underline;">TrueFlow</a></p>
+            <p>
+                <a href="privacy-policy.html" style="color: rgba(255,255,255,0.7);">Privacy Policy</a> |
+                <a href="terms-of-service.html" style="color: rgba(255,255,255,0.7);">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                menuIcon.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+                    menuIcon.textContent = '☰';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
