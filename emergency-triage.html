@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Notary Services - Grace Notary INK</title>
+    <meta name="description" content="Need urgent notary services? Let us help you determine the best way to get your documents notarized quickly in Boise, Idaho.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2b4c7e;
+            --secondary: #567ebb;
+            --accent: #c53030;
+            --success: #38a169;
+            --light: #f8f9fa;
+            --dark: #1a202c;
+            --gray: #718096;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .question-step {
+            display: none;
+        }
+
+        .question-step.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-title {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .question-description {
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            font-size: 16px;
+            color: var(--dark);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .option-btn:hover {
+            border-color: var(--secondary);
+            background: #f7fafc;
+            transform: translateX(5px);
+        }
+
+        .option-btn .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .option-btn .text {
+            flex: 1;
+        }
+
+        .option-btn .subtext {
+            display: block;
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        .result-box {
+            background: #f7fafc;
+            border-left: 4px solid var(--primary);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .result-box.success {
+            border-left-color: var(--success);
+            background: #f0fff4;
+        }
+
+        .result-box.warning {
+            border-left-color: #d69e2e;
+            background: #fffaf0;
+        }
+
+        .result-box.urgent {
+            border-left-color: var(--accent);
+            background: #fff5f5;
+        }
+
+        .result-box h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .result-box p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .result-box ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .result-box li {
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(43, 76, 126, 0.3);
+        }
+
+        .btn-emergency {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-emergency:hover {
+            background: #9b2c2c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(197, 48, 48, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .back-btn {
+            display: inline-block;
+            color: var(--gray);
+            text-decoration: none;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            color: var(--primary);
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #e2e8f0;
+            margin-bottom: 30px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                border-radius: 0;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .question-title {
+                font-size: 20px;
+            }
+
+            .option-btn {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚨 Emergency Notary Services</h1>
+            <p>Let's find the fastest way to help you</p>
+        </div>
+
+        <div class="content">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+
+            <!-- Step 1: When do you need service? -->
+            <div class="question-step active" id="step1">
+                <h2 class="question-title">When do you need your document notarized?</h2>
+                <p class="question-description">This helps us determine the best way to assist you</p>
+
+                <div class="option-group">
+                    <button class="option-btn" onclick="selectTiming('right-now')">
+                        <span class="icon">⚡</span>
+                        <span class="text">
+                            Right Now / ASAP
+                            <span class="subtext">I need this done immediately</span>
+                        </span>
+                    </button>
+
+                    <button class="option-btn" onclick="selectTiming('today-tomorrow')">
+                        <span class="icon">📅</span>
+                        <span class="text">
+                            Today or First Thing Tomorrow
+                            <span class="subtext">Urgent - within 24 hours</span>
+                        </span>
+                    </button>
+
+                    <button class="option-btn" onclick="selectTiming('next-week')">
+                        <span class="icon">🗓️</span>
+                        <span class="text">
+                            Next Week or Beyond
+                            <span class="subtext">I can wait a few days</span>
+                        </span>
+                    </button>
+                </div>
+
+                <a href="index.html" class="back-btn">← Back to homepage</a>
+            </div>
+
+            <!-- Step 2: ASAP Result -->
+            <div class="question-step" id="stepRightNow">
+                <div class="result-box urgent">
+                    <h3>🚨 Immediate Emergency Service</h3>
+                    <p>Since you need service right away, the fastest option is to call us directly so we can assess your situation and dispatch immediately if available.</p>
+                    <p><strong>Please call:</strong></p>
+                </div>
+
+                <a href="tel:2088708576" class="btn btn-emergency">📞 Call Now: (208) 870-8576</a>
+                <a href="index.html#booking" class="btn btn-secondary">Or Try Our Online Booking</a>
+
+                <a href="#" class="back-btn" onclick="resetTriage(); return false;">← Start over</a>
+            </div>
+
+            <!-- Step 3: Today/Tomorrow - Check Availability -->
+            <div class="question-step" id="stepTodayTomorrow">
+                <h2 class="question-title">Checking Same-Day Availability...</h2>
+                <p class="question-description">Do you have availability within the next 3 hours?</p>
+
+                <div class="option-group">
+                    <button class="option-btn" onclick="selectAvailability('yes')">
+                        <span class="icon">✅</span>
+                        <span class="text">
+                            Yes, I'm available within 3 hours
+                            <span class="subtext">Required for same-day service</span>
+                        </span>
+                    </button>
+
+                    <button class="option-btn" onclick="selectAvailability('no')">
+                        <span class="icon">⏰</span>
+                        <span class="text">
+                            No, I need a specific time
+                            <span class="subtext">I need to schedule for a later time today/tomorrow</span>
+                        </span>
+                    </button>
+                </div>
+
+                <a href="#" class="back-btn" onclick="goBack(); return false;">← Back</a>
+            </div>
+
+            <!-- Step 4: Available Today - Check Slots -->
+            <div class="question-step" id="stepCheckSlots">
+                <div id="slotsAvailable" style="display: none;">
+                    <div class="result-box success">
+                        <h3>✅ Great! We Have Availability</h3>
+                        <p>We can accommodate you today! Please complete our online booking form and we'll confirm your appointment right away.</p>
+                        <p><strong>Same-day appointments require:</strong></p>
+                        <ul>
+                            <li>At least 3 hours advance notice</li>
+                            <li>Flexibility with exact timing</li>
+                            <li>All document details provided upfront</li>
+                        </ul>
+                    </div>
+
+                    <a href="index.html#booking" class="btn btn-primary">📝 Complete Booking Form</a>
+                    <a href="tel:2088708576" class="btn btn-secondary">Or Call: (208) 870-8576</a>
+                </div>
+
+                <div id="slotsBooked" style="display: none;">
+                    <div class="result-box warning">
+                        <h3>⚠️ Today's Slots Are Fully Booked</h3>
+                        <p>Our same-day schedule is currently full. We recommend:</p>
+                        <ul>
+                            <li><strong>Call us directly</strong> - We may be able to add you to our waitlist or find a solution</li>
+                            <li><strong>Book for tomorrow</strong> - Use our online booking form for next-day service</li>
+                        </ul>
+                    </div>
+
+                    <a href="tel:2088708576" class="btn btn-emergency">📞 Call For Waitlist: (208) 870-8576</a>
+                    <a href="index.html#booking" class="btn btn-primary">Book For Tomorrow Instead</a>
+                </div>
+
+                <a href="#" class="back-btn" onclick="goBack(); return false;">← Back</a>
+            </div>
+
+            <!-- Step 5: Not Available Today - Use Form -->
+            <div class="question-step" id="stepNotAvailable">
+                <div class="result-box">
+                    <h3>📅 Schedule Your Appointment</h3>
+                    <p>Since you need a specific time or aren't available within the 3-hour window, please use our online booking form to:</p>
+                    <ul>
+                        <li>Choose your preferred date and time</li>
+                        <li>Provide document details</li>
+                        <li>Select your service type</li>
+                        <li>Get instant confirmation</li>
+                    </ul>
+                    <p><strong>Response time:</strong> We typically confirm appointments within 1-2 hours during business hours.</p>
+                </div>
+
+                <a href="index.html#booking" class="btn btn-primary">📝 Go to Booking Form</a>
+                <a href="tel:2088708576" class="btn btn-secondary">Or Call: (208) 870-8576</a>
+
+                <a href="#" class="back-btn" onclick="goBack(); return false;">← Back</a>
+            </div>
+
+            <!-- Step 6: Next Week - Not Emergency -->
+            <div class="question-step" id="stepNextWeek">
+                <div class="result-box">
+                    <h3>📆 Regular Appointment Booking</h3>
+                    <p>Since you have time before you need service, this isn't an emergency. Please use our standard booking form to schedule your appointment.</p>
+                    <p><strong>Why use the booking form?</strong></p>
+                    <ul>
+                        <li>Choose from available time slots that work for you</li>
+                        <li>No phone call needed</li>
+                        <li>Instant confirmation</li>
+                        <li>Full service details and pricing upfront</li>
+                    </ul>
+                </div>
+
+                <a href="index.html#booking" class="btn btn-primary">📝 Go to Booking Form</a>
+                <a href="services.html" class="btn btn-secondary">Learn About Our Services</a>
+
+                <a href="#" class="back-btn" onclick="resetTriage(); return false;">← Start over</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let selectedTiming = null;
+
+        function updateProgress(step) {
+            const totalSteps = 3;
+            const progress = (step / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function hideAllSteps() {
+            document.querySelectorAll('.question-step').forEach(step => {
+                step.classList.remove('active');
+            });
+        }
+
+        function showStep(stepId) {
+            hideAllSteps();
+            document.getElementById(stepId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function selectTiming(timing) {
+            selectedTiming = timing;
+            currentStep = 2;
+            updateProgress(2);
+
+            if (timing === 'right-now') {
+                showStep('stepRightNow');
+            } else if (timing === 'today-tomorrow') {
+                showStep('stepTodayTomorrow');
+            } else if (timing === 'next-week') {
+                updateProgress(3);
+                showStep('stepNextWeek');
+            }
+        }
+
+        function selectAvailability(available) {
+            currentStep = 3;
+            updateProgress(3);
+            showStep('stepCheckSlots');
+
+            // Check if current time is within business hours and not in the "dead week"
+            // For now, we'll simulate availability check
+            // In production, this would connect to your booking system API
+
+            const now = new Date();
+            const hour = now.getHours();
+            const dayOfWeek = now.getDay();
+            const dayOfMonth = now.getDate();
+
+            // Simple availability logic:
+            // - Check if it's during business hours (6 AM - 11 PM)
+            // - Check if it's not Sunday before 2 PM
+            // - Simulate checking if middle of month (dead week: 13th-18th)
+
+            const isBusinessHours = (dayOfWeek === 0 && hour >= 14 && hour < 23) ||
+                                   (dayOfWeek !== 0 && hour >= 6 && hour < 23);
+            const isDeadWeek = dayOfMonth >= 13 && dayOfMonth <= 18;
+
+            // If available within 3 hours and during business hours and not dead week, show available slots
+            if (available === 'yes' && isBusinessHours && !isDeadWeek) {
+                document.getElementById('slotsAvailable').style.display = 'block';
+                document.getElementById('slotsBooked').style.display = 'none';
+            } else {
+                // Otherwise show fully booked
+                document.getElementById('slotsAvailable').style.display = 'none';
+                document.getElementById('slotsBooked').style.display = 'block';
+            }
+
+            if (available === 'no') {
+                // If not available within 3 hours, redirect to booking form
+                showStep('stepNotAvailable');
+            }
+        }
+
+        function goBack() {
+            if (currentStep === 3) {
+                currentStep = 2;
+                showStep('stepTodayTomorrow');
+                updateProgress(2);
+            } else if (currentStep === 2) {
+                resetTriage();
+            }
+        }
+
+        function resetTriage() {
+            currentStep = 1;
+            selectedTiming = null;
+            updateProgress(0);
+            showStep('step1');
+        }
+
+        // Initialize
+        updateProgress(1);
+    </script>
+</body>
+</html>
