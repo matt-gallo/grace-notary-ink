@@ -3,6 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTN58VCSL0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FTN58VCSL0');
+
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'phone_click', {
+              event_category: 'conversion',
+              event_label: el.getAttribute('href').replace('tel:', ''),
+              page_path: window.location.pathname
+            });
+          });
+        });
+        document.querySelectorAll('a[href^="mailto:"]').forEach(function(el) {
+          el.addEventListener('click', function() {
+            gtag('event', 'email_click', {
+              event_category: 'conversion',
+              event_label: el.getAttribute('href').replace('mailto:', ''),
+              page_path: window.location.pathname
+            });
+          });
+        });
+        document.querySelectorAll('form').forEach(function(form) {
+          form.addEventListener('submit', function() {
+            gtag('event', 'form_submit', {
+              event_category: 'conversion',
+              event_label: form.id || form.name || form.action || 'form',
+              page_path: window.location.pathname
+            });
+          });
+        });
+        window.addEventListener('message', function(e) {
+          if (!e.data) return;
+          var s = typeof e.data === 'string' ? e.data : JSON.stringify(e.data);
+          if (/calendly|acuity|squareup|appointment|event_scheduled|booking/i.test(s)) {
+            var name = /scheduled|booked|complete|confirmed/i.test(s) ? 'booking_completed' : 'booking_interaction';
+            gtag('event', name, {
+              event_category: 'conversion',
+              page_path: window.location.pathname
+            });
+          }
+        });
+      });
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wkfhrrxgql");
+    </script>
     <meta name="description" content="Upload your documents for printing services at Grace Notary INK. Fast, reliable document printing in Boise and surrounding Idaho areas.">
     <meta name="keywords" content="document printing, file upload, print services, boise printing, idaho printing">
     <title>File Upload for Printing | Grace Notary INK</title>
