@@ -644,8 +644,9 @@
             fetch(WEBHOOK_URL, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
-                mode: 'no-cors'
+                body: JSON.stringify(payload)
+            }).then(function(res) {
+                console.log('Webhook response:', res.status);
             }).catch(function(err) {
                 console.error('Webhook submission error:', err);
             });
