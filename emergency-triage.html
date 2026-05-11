@@ -316,6 +316,67 @@
             transition: width 0.3s ease;
         }
 
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-field label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .form-field input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            color: var(--dark);
+            transition: border-color 0.2s ease;
+        }
+
+        .form-field input:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .form-field input.error {
+            border-color: var(--accent);
+        }
+
+        .privacy-note {
+            background: #f0f9ff;
+            border-left: 4px solid var(--secondary);
+            padding: 15px 18px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: var(--dark);
+            line-height: 1.5;
+        }
+
+        .privacy-note strong {
+            color: var(--primary);
+        }
+
+        .form-error {
+            color: var(--accent);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-error.visible {
+            display: block;
+        }
+
         @media (max-width: 640px) {
             .container {
                 border-radius: 0;
@@ -351,8 +412,37 @@
                 <div class="progress-fill" id="progressBar"></div>
             </div>
 
+            <!-- Step 0: Contact Collection -->
+            <div class="question-step active" id="stepContact">
+                <h2 class="question-title">First, let's get your contact info</h2>
+                <p class="question-description">So we don't lose track of you if we get disconnected</p>
+
+                <div class="privacy-note">
+                    <strong>Why we're asking:</strong> Emergency calls sometimes drop or go to voicemail when we're already helping another client. We collect your name, phone, and email so we can call or email you back immediately if we miss your call. Your info is only used to reach you about this request — we won't share it or add you to any marketing lists.
+                </div>
+
+                <form class="contact-form" id="contactForm" onsubmit="submitContact(event)">
+                    <div class="form-field">
+                        <label for="contactName">Full Name *</label>
+                        <input type="text" id="contactName" name="name" required autocomplete="name" placeholder="Jane Smith">
+                    </div>
+                    <div class="form-field">
+                        <label for="contactPhone">Phone Number *</label>
+                        <input type="tel" id="contactPhone" name="phone" required autocomplete="tel" placeholder="(208) 555-0123">
+                    </div>
+                    <div class="form-field">
+                        <label for="contactEmail">Email Address *</label>
+                        <input type="email" id="contactEmail" name="email" required autocomplete="email" placeholder="you@example.com">
+                        <div class="form-error" id="contactError">Please fill out all fields with valid info.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="contactSubmitBtn">Continue →</button>
+                </form>
+
+                <a href="index.html" class="back-btn">← Back to homepage</a>
+            </div>
+
             <!-- Step 1: When do you need service? -->
-            <div class="question-step active" id="step1">
+            <div class="question-step" id="step1">
                 <h2 class="question-title">When do you need your document notarized?</h2>
                 <p class="question-description">This helps us determine the best way to assist you</p>
 
@@ -382,7 +472,7 @@
                     </button>
                 </div>
 
-                <a href="index.html" class="back-btn">← Back to homepage</a>
+                <a href="#" class="back-btn" onclick="resetTriage(); return false;">← Back</a>
             </div>
 
             <!-- Step 2: ASAP Result -->
@@ -503,13 +593,74 @@
     </div>
 
     <script>
-        let currentStep = 1;
+        const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/AyR7m7UYV1tdR7ZBJ7M6/webhook-trigger/122404b1-8b4d-41ef-861a-c89a8cb73113';
+
+        let currentStep = 0;
         let selectedTiming = null;
+        let contactInfo = null;
 
         function updateProgress(step) {
-            const totalSteps = 3;
+            const totalSteps = 4;
             const progress = (step / totalSteps) * 100;
             document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function submitContact(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('contactName').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const errorEl = document.getElementById('contactError');
+            const submitBtn = document.getElementById('contactSubmitBtn');
+
+            const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            const phoneDigits = phone.replace(/\D/g, '');
+            const phoneValid = phoneDigits.length >= 10;
+
+            if (!name || !emailValid || !phoneValid) {
+                errorEl.textContent = !name ? 'Please enter your full name.'
+                    : !phoneValid ? 'Please enter a valid phone number (at least 10 digits).'
+                    : 'Please enter a valid email address.';
+                errorEl.classList.add('visible');
+                return false;
+            }
+
+            errorEl.classList.remove('visible');
+            contactInfo = { name, phone, email };
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Continuing...';
+
+            const payload = {
+                name: name,
+                phone: phone,
+                email: email,
+                source: 'emergency-triage',
+                page: window.location.pathname,
+                submitted_at: new Date().toISOString()
+            };
+
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+                mode: 'no-cors'
+            }).catch(function(err) {
+                console.error('Webhook submission error:', err);
+            });
+
+            if (typeof gtag === 'function') {
+                gtag('event', 'emergency_contact_submit', {
+                    event_category: 'conversion',
+                    page_path: window.location.pathname
+                });
+            }
+
+            currentStep = 1;
+            updateProgress(1);
+            showStep('step1');
+            return false;
         }
 
         function hideAllSteps() {
@@ -534,14 +685,14 @@
             } else if (timing === 'today-tomorrow') {
                 showStep('stepTodayTomorrow');
             } else if (timing === 'next-week') {
-                updateProgress(3);
+                updateProgress(4);
                 showStep('stepNextWeek');
             }
         }
 
         function selectAvailability(available) {
             currentStep = 3;
-            updateProgress(3);
+            updateProgress(4);
             showStep('stepCheckSlots');
 
             // Check if current time is within business hours and not in the "dead week"
@@ -584,19 +735,24 @@
                 showStep('stepTodayTomorrow');
                 updateProgress(2);
             } else if (currentStep === 2) {
-                resetTriage();
+                currentStep = 1;
+                updateProgress(1);
+                showStep('step1');
             }
         }
 
         function resetTriage() {
-            currentStep = 1;
+            currentStep = 0;
             selectedTiming = null;
             updateProgress(0);
-            showStep('step1');
+            showStep('stepContact');
         }
 
         // Initialize
-        updateProgress(1);
+        updateProgress(0);
     </script>
+
+    <!-- LeadConnector Chat Widget -->
+    <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a02447d5cec6980f63c7a7c" data-source="WEB_USER"></script>
 </body>
 </html>
