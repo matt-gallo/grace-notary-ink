@@ -412,7 +412,7 @@
                 <div class="progress-fill" id="progressBar"></div>
             </div>
 
-            <!-- A2P-REMOVED-START: Contact-collection step (name/phone/email form) hidden for A2P registration. See A2P_REMOVAL_LOG.md.
+            <!-- Step 0: Contact Collection -->
             <div class="question-step active" id="stepContact">
                 <h2 class="question-title">First, let's get your contact info</h2>
                 <p class="question-description">So we don't lose track of you if we get disconnected</p>
@@ -440,10 +440,9 @@
 
                 <a href="index.html" class="back-btn">← Back to homepage</a>
             </div>
-            A2P-REMOVED-END -->
 
             <!-- Step 1: When do you need service? -->
-            <div class="question-step active" id="step1">
+            <div class="question-step" id="step1">
                 <h2 class="question-title">When do you need your document notarized?</h2>
                 <p class="question-description">This helps us determine the best way to assist you</p>
 
@@ -473,7 +472,7 @@
                     </button>
                 </div>
 
-                <a href="index.html" class="back-btn">← Back to homepage</a>
+                <a href="#" class="back-btn" onclick="resetTriage(); return false;">← Back</a>
             </div>
 
             <!-- Step 2: ASAP Result -->
@@ -594,15 +593,14 @@
     </div>
 
     <script>
-        // A2P-REMOVED: WEBHOOK_URL and submitContact() retained but unused while the contact-collection step is hidden.
         const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/AyR7m7UYV1tdR7ZBJ7M6/webhook-trigger/122404b1-8b4d-41ef-861a-c89a8cb73113';
 
-        let currentStep = 1;
+        let currentStep = 0;
         let selectedTiming = null;
         let contactInfo = null;
 
         function updateProgress(step) {
-            const totalSteps = 3;
+            const totalSteps = 4;
             const progress = (step / totalSteps) * 100;
             document.getElementById('progressBar').style.width = progress + '%';
         }
@@ -688,14 +686,14 @@
             } else if (timing === 'today-tomorrow') {
                 showStep('stepTodayTomorrow');
             } else if (timing === 'next-week') {
-                updateProgress(3);
+                updateProgress(4);
                 showStep('stepNextWeek');
             }
         }
 
         function selectAvailability(available) {
             currentStep = 3;
-            updateProgress(3);
+            updateProgress(4);
             showStep('stepCheckSlots');
 
             // Check if current time is within business hours and not in the "dead week"
@@ -745,14 +743,14 @@
         }
 
         function resetTriage() {
-            currentStep = 1;
+            currentStep = 0;
             selectedTiming = null;
-            updateProgress(1);
-            showStep('step1');
+            updateProgress(0);
+            showStep('stepContact');
         }
 
         // Initialize
-        updateProgress(1);
+        updateProgress(0);
     </script>
 
     <!-- LeadConnector Chat Widget -->
