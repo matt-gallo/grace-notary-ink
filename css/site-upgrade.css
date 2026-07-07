@@ -1,0 +1,529 @@
+/* ==========================================================================
+   Grace Notary INK — shared design system
+   Loaded after each page's inline styles; unifies tokens, type, spacing,
+   and component styling across the whole site.
+   ========================================================================== */
+
+:root {
+    /* Brand palette — deep "ink" navy family, sky blue kept as accent */
+    --primary-color: #1e4e79;
+    --secondary-color: #2471a3;
+    --accent-color: #b83232;
+    --sky: #5dade2;
+    --gold: #e8b64c;
+    --ink-900: #122c44;
+    --ink-800: #17395a;
+
+    --text-dark: #253746;
+    --text-light: #5c6b73;
+    --bg-light: #f5f8fa;
+    --white: #ffffff;
+    --charcoal: #34495e;
+    --border: #e3eaf0;
+
+    /* Emergency triage page token remap (names only used there) */
+    --primary: #1e4e79;
+    --secondary: #2471a3;
+    --accent: #b83232;
+    --dark: #253746;
+    --gray: #5c6b73;
+    --light: #f5f8fa;
+
+    /* Scale tokens */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-pill: 999px;
+    --shadow-sm: 0 1px 2px rgba(18, 44, 68, 0.06), 0 2px 8px rgba(18, 44, 68, 0.06);
+    --shadow-md: 0 2px 4px rgba(18, 44, 68, 0.06), 0 8px 24px rgba(18, 44, 68, 0.10);
+    --shadow-lg: 0 4px 8px rgba(18, 44, 68, 0.08), 0 16px 40px rgba(18, 44, 68, 0.14);
+    --ease-out: cubic-bezier(.2, .8, .2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Typography
+   -------------------------------------------------------------------------- */
+
+body {
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* One brand voice for headings on every page (reviews + triage included) */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+}
+
+/* Fluid section headings on a consistent scale */
+.calendar-section h2,
+.why-choose-us h2,
+.reviews-container h2,
+.faq-section h2,
+.service-areas h2,
+.services-section h2,
+.intro-section h2,
+.stats-section h2 {
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    color: var(--primary-color);
+}
+
+p {
+    text-wrap: pretty;
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility & motion foundations
+   -------------------------------------------------------------------------- */
+
+:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.emergency-phone:focus-visible,
+.btn:focus-visible {
+    outline-color: var(--ink-900);
+}
+
+::selection {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Header / navigation
+   -------------------------------------------------------------------------- */
+
+.header {
+    background: rgba(255, 255, 255, 0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: none;
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow .25s var(--ease-out);
+}
+
+.header.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--primary-color);
+    letter-spacing: -0.01em;
+}
+
+/* Animated underline on nav links (desktop) */
+@media (min-width: 769px) {
+    .nav-links a:not(.emergency-phone) {
+        position: relative;
+        padding-bottom: 4px;
+    }
+
+    .nav-links a:not(.emergency-phone)::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--secondary-color);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform .3s var(--ease-out);
+    }
+
+    .nav-links a:not(.emergency-phone):hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+}
+
+/* Emergency line reads as urgent — distinct from booking blue */
+.emergency-phone {
+    background: var(--accent-color);
+    border-radius: var(--radius-pill);
+    padding: 0.55rem 1.4rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.emergency-phone:hover {
+    background: #9c2828;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+    .emergency-phone {
+        white-space: normal;
+        font-size: 0.95rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+    border-radius: var(--radius-md);
+    transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out), background .2s, color .2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Shine sweep across primary CTAs */
+@media (prefers-reduced-motion: no-preference) {
+    .btn-primary::after,
+    .btn-white::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -130%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+        transform: skewX(-20deg);
+        transition: left .6s ease;
+        pointer-events: none;
+    }
+
+    .btn-primary:hover::after,
+    .btn-white:hover::after {
+        left: 150%;
+    }
+}
+
+.btn-emergency {
+    border-radius: var(--radius-md);
+}
+
+.service-button {
+    border-radius: var(--radius-md) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Hero (home)
+   -------------------------------------------------------------------------- */
+
+/* Replace muddy gray overlay with a deep navy scrim */
+.hero-background::after {
+    background: linear-gradient(180deg, rgba(18, 44, 68, 0.55) 0%, rgba(18, 44, 68, 0.68) 100%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .hero-content > * {
+        opacity: 0;
+        transform: translateY(24px);
+        animation: heroRise .8s var(--ease-out) forwards;
+    }
+
+    .hero-content > *:nth-child(2) { animation-delay: .12s; }
+    .hero-content > *:nth-child(3) { animation-delay: .24s; }
+    .hero-content > *:nth-child(4) { animation-delay: .36s; }
+
+    @keyframes heroRise {
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+}
+
+.hero h1 {
+    text-shadow: 0 2px 24px rgba(18, 44, 68, 0.45);
+}
+
+.trust-signals {
+    background: rgba(255, 255, 255, 0.94);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+/* --------------------------------------------------------------------------
+   Sub-page headers — navy gradient with faded blueprint grid texture
+   -------------------------------------------------------------------------- */
+
+.page-header {
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(135deg, var(--ink-900) 0%, var(--primary-color) 60%, var(--ink-800) 100%);
+    background-size: 32px 32px, 32px 32px, cover;
+    padding: 4rem 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   Cards — one radius, one border, one shadow family
+   -------------------------------------------------------------------------- */
+
+.feature-card,
+.review-card,
+.service-block,
+.stat-card,
+.info-card,
+.highlight-box,
+.contact-form,
+.contact-info,
+.form-container,
+.upload-container,
+.booking-info,
+.calendar-container,
+.service-selector,
+.booking-form-container,
+.service-area-left,
+.service-area-right {
+    border-radius: var(--radius-lg);
+}
+
+.feature-card,
+.review-card,
+.stat-card,
+.info-card,
+.service-block {
+    background: var(--white);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), border-color .25s;
+}
+
+.feature-card:hover,
+.review-card:hover,
+.stat-card:hover,
+.info-card:hover,
+.service-block:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: #cfdde8;
+}
+
+/* Slim brand accent along the top of feature cards */
+.feature-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--sky));
+}
+
+.booking-form-container {
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.calendar-embed {
+    border-radius: var(--radius-md);
+}
+
+.service-area-left,
+.service-area-right {
+    box-shadow: var(--shadow-lg);
+}
+
+.map-placeholder {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+/* --------------------------------------------------------------------------
+   Dark bands — service areas, CTA boxes
+   -------------------------------------------------------------------------- */
+
+.service-areas {
+    background:
+        radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.5px),
+        linear-gradient(135deg, var(--ink-900) 0%, var(--primary-color) 100%);
+    background-size: 24px 24px, cover;
+    padding: 4rem 2rem;
+}
+
+.cta-box,
+.cta-section {
+    background: linear-gradient(135deg, var(--ink-900) 0%, var(--primary-color) 100%);
+    border-radius: var(--radius-lg);
+}
+
+.urgency-banner,
+.emergency-banner {
+    border-radius: var(--radius-md);
+}
+
+/* --------------------------------------------------------------------------
+   Forms
+   -------------------------------------------------------------------------- */
+
+.booking-intake-form select,
+.booking-intake-form textarea,
+.zip-input-group input,
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.booking-intake-form select:focus,
+.booking-intake-form textarea:focus,
+.zip-input-group input:focus,
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(36, 113, 163, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   FAQ
+   -------------------------------------------------------------------------- */
+
+.faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    margin-bottom: 0.75rem;
+    padding: 0 1.25rem;
+    background: var(--white);
+    transition: border-color .25s, box-shadow .25s;
+}
+
+.faq-item.active {
+    border-color: #cfdde8;
+    box-shadow: var(--shadow-sm);
+}
+
+.faq-question {
+    padding: 1.25rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   Footer — deep ink navy (was low-contrast light blue)
+   -------------------------------------------------------------------------- */
+
+.footer {
+    background: var(--ink-900);
+}
+
+.footer-section p,
+.footer-section a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-section a {
+    transition: color .2s, transform .2s var(--ease-out);
+}
+
+.footer-section a:hover {
+    color: var(--sky);
+}
+
+.footer-bottom {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* --------------------------------------------------------------------------
+   Scroll reveal (classes are added by js/site-upgrade.js only,
+   so content is never hidden without JavaScript)
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+    .rv {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity .7s var(--ease-out), transform .7s var(--ease-out);
+        transition-delay: var(--rv-d, 0ms);
+    }
+
+    .rv.rv-in {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Emergency triage page (loaded standalone + inside the home-page modal)
+   -------------------------------------------------------------------------- */
+
+/* Restore the triage card header (the shared white nav .header style
+   above must not apply here) and swap the purple body wash for brand navy */
+.container > .header {
+    background: linear-gradient(135deg, var(--ink-900) 0%, var(--primary-color) 100%);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-bottom: none;
+    box-shadow: none;
+}
+
+body:has(> .container > .header) {
+    background:
+        radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px),
+        linear-gradient(135deg, var(--ink-900) 0%, var(--primary-color) 100%);
+    background-size: 24px 24px, cover;
+}
+
+.container:has(> .header) {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.option-btn {
+    border-radius: var(--radius-md);
+    border-color: var(--border);
+    transition: transform .2s var(--ease-out), border-color .2s, box-shadow .2s;
+}
+
+.option-btn:hover {
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.result-box {
+    border-radius: var(--radius-md);
+}

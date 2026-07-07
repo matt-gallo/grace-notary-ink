@@ -1113,7 +1113,177 @@
                 font-size: 0.95rem;
             }
         }
+
+        /* Booking pre-qualifier (document type + timeframe selector) */
+        .booking-step {
+            display: none;
+            max-width: 640px;
+            margin: 1.5rem auto 0;
+        }
+
+        .booking-step.active {
+            display: block;
+        }
+
+        .booking-step-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1.35rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-step-hint {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-type-options {
+            display: grid;
+            gap: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-type-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            padding: 1.1rem 1.25rem;
+            background: var(--white);
+            border: 2px solid var(--border, #e3eaf0);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-dark);
+            text-align: left;
+            cursor: pointer;
+            transition: border-color .2s, background .2s, transform .2s, box-shadow .2s;
+        }
+
+        .doc-type-btn:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(18, 44, 68, 0.08);
+        }
+
+        .doc-type-btn.selected {
+            border-color: var(--secondary-color);
+            background: #eef5fa;
+            box-shadow: inset 0 0 0 1px var(--secondary-color);
+        }
+
+        .doc-type-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .doc-type-text strong {
+            display: block;
+            font-weight: 700;
+        }
+
+        .doc-type-text small {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        .booking-continue {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s, transform .2s, box-shadow .2s, opacity .2s;
+        }
+
+        .booking-continue:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(18, 44, 68, 0.15);
+        }
+
+        .booking-continue:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        .booking-back {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .booking-back:hover {
+            color: var(--secondary-color);
+        }
+
+        .booking-urgent-note {
+            background: #fdf3f3;
+            border: 1px solid #ecc8c8;
+            border-left: 4px solid var(--accent-color, #b83232);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-urgent-note h4 {
+            color: var(--accent-color, #b83232);
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-urgent-note p {
+            color: var(--text-dark);
+            font-size: 0.98rem;
+        }
+
+        .booking-urgent-actions {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .booking-urgent-actions .btn {
+            text-align: center;
+        }
+
+        .btn-call-urgent {
+            background: var(--accent-color, #b83232);
+            color: var(--white);
+        }
+
+        .btn-triage {
+            background: var(--white);
+            color: var(--accent-color, #b83232);
+            border: 2px solid var(--accent-color, #b83232);
+        }
+
+        .booking-change-bar {
+            display: none;
+            text-align: center;
+            margin: 1.5rem auto 0;
+        }
+
+        /* Fallback so a visible booking widget is always usable even if the
+           embed script's height message is missed */
+        .calendar-embed iframe {
+            width: 100%;
+            min-height: 700px;
+        }
     </style>
+    <meta name="theme-color" content="#1e4e79">
+    <link rel="stylesheet" href="css/site-upgrade.css">
+    <script src="js/site-upgrade.js" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -1153,7 +1323,7 @@
             <div class="trust-signals">
                 <p>
                     <a href="https://g.page/r/CeZ-T5d_sTrwEAI" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
-                        <span class="rating">⭐⭐⭐⭐⭐</span> 5.0 rating on Google | 267+ satisfied clients
+                        <span class="rating">⭐⭐⭐⭐⭐</span> 5.0 rating on Google | 400+ satisfied clients
                     </a>
                 </p>
                 <div class="trust-badges">
@@ -1179,31 +1349,81 @@
             <!-- Business Name Header -->
             <h2 style="text-align: center; font-size: 2rem; margin-bottom: 1rem; color: var(--text-dark); font-family: 'Playfair Display', Georgia, serif;">Grace Notary INK - Notary Services</h2>
 
-            <!-- Standard Notarization Form - Displayed by Default -->
-            <div id="calendar-standard" class="calendar-embed" style="display: block; margin-top: 1rem;">
+            <!-- Step 1: Document type(s) -->
+            <div id="bookingStep1" class="booking-step active">
+                <h3 class="booking-step-title">What type(s) of documents need to be signed?</h3>
+                <p class="booking-step-hint">Select all that apply</p>
+                <div class="doc-type-options">
+                    <button type="button" class="doc-type-btn" data-doc="loan" aria-pressed="false">
+                        <span class="doc-type-icon">🏠</span>
+                        <span class="doc-type-text">
+                            <strong>Loan or Mortgage Documents</strong>
+                            <small>Refinance, home purchase, HELOC, reverse mortgage</small>
+                        </span>
+                    </button>
+                    <button type="button" class="doc-type-btn" data-doc="general" aria-pressed="false">
+                        <span class="doc-type-icon">📄</span>
+                        <span class="doc-type-text">
+                            <strong>General Documents</strong>
+                            <small>Power of attorney, wills, affidavits, vehicle titles, contracts</small>
+                        </span>
+                    </button>
+                </div>
+                <button type="button" id="docTypeContinue" class="booking-continue" disabled>Continue</button>
+            </div>
+
+            <!-- Step 2: Timeframe -->
+            <div id="bookingStep2" class="booking-step">
+                <h3 class="booking-step-title">When do you need your appointment?</h3>
+                <p class="booking-step-hint">Appointments can be booked online with at least 3 hours notice</p>
+                <div class="doc-type-options">
+                    <button type="button" class="doc-type-btn timeframe-btn" data-time="asap">
+                        <span class="doc-type-icon">⚡</span>
+                        <span class="doc-type-text"><strong>Within the next 3 hours</strong></span>
+                    </button>
+                    <button type="button" class="doc-type-btn timeframe-btn" data-time="soon">
+                        <span class="doc-type-icon">📅</span>
+                        <span class="doc-type-text"><strong>Today or tomorrow</strong></span>
+                    </button>
+                    <button type="button" class="doc-type-btn timeframe-btn" data-time="later">
+                        <span class="doc-type-icon">🗓️</span>
+                        <span class="doc-type-text"><strong>This week or later</strong></span>
+                    </button>
+                </div>
+                <a href="#" id="backToStep1" class="booking-back">← Back to document types</a>
+            </div>
+
+            <!-- Urgent (under 3 hours) notice -->
+            <div id="bookingUrgent" class="booking-step">
+                <div class="booking-urgent-note">
+                    <h4>⚡ Need service within 3 hours?</h4>
+                    <p>Online booking requires at least 3 hours advance notice. For faster service, call us directly so we can assess your situation and dispatch immediately if available.</p>
+                </div>
+                <div class="booking-urgent-actions">
+                    <a href="tel:2088708576" class="btn btn-call-urgent">📞 Call Now: (208) 870-8576</a>
+                    <a href="#" class="btn btn-triage" onclick="openEmergencyTriage(); return false;">Use Our Emergency Service Guide</a>
+                </div>
+                <a href="#" id="urgentBookAnyway" class="booking-back">Book online for a later time instead →</a><br>
+                <a href="#" id="backToStep2" class="booking-back">← Back</a>
+            </div>
+
+            <!-- Standard Notarization Calendar -->
+            <div id="calendar-standard" class="calendar-embed" style="display: none; margin-top: 1rem;">
                 <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Standard Notary Service (30 minutes)</h3>
                 <iframe src="https://api.leadconnectorhq.com/widget/booking/YHFVKEmruniVKsBMCSO3" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="YHFVKEmruniVKsBMCSO3_1769209270168"></iframe>
                 <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
             </div>
 
-            <!-- Service Type Switcher - Below the form -->
-            <div id="serviceSelector" class="service-selector" style="margin-top: 2rem; padding: 1.5rem;">
-                <p style="text-align: center; margin-bottom: 1rem; color: var(--text-light);">Need a different service?</p>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-                    <button type="button" id="selectStandard" class="service-button" style="flex: 1; min-width: 200px; padding: 1rem; background: var(--secondary-color); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.1); opacity: 0.5;">
-                        Standard Notarization
-                    </button>
-                    <button type="button" id="selectLoan" class="service-button" style="flex: 1; min-width: 200px; padding: 1rem; background: var(--secondary-color); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                        Loan Signing
-                    </button>
-                </div>
-            </div>
-
-            <!-- Loan Signing Calendar - Hidden by Default -->
-            <div id="calendar-loan" class="calendar-embed" style="display: none; margin-top: 2rem;">
+            <!-- Loan Signing Calendar -->
+            <div id="calendar-loan" class="calendar-embed" style="display: none; margin-top: 1rem;">
                 <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Loan Signing Service (60 minutes)</h3>
                 <iframe src="https://api.leadconnectorhq.com/widget/booking/S2TQggkuy9y4S9hO7dFX" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="S2TQggkuy9y4S9hO7dFX_1769214819577"></iframe>
                 <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+            </div>
+
+            <!-- Change selections link (shown with a calendar) -->
+            <div id="bookingChangeBar" class="booking-change-bar">
+                <a href="#" id="bookingReset" class="booking-back">← Change my document type or timeframe</a>
             </div>
         </div>
     </section>
@@ -1731,49 +1951,106 @@
             });
         });
 
-        // Service type button handlers - show appropriate calendar
-        const selectStandardBtn = document.getElementById('selectStandard');
-        const selectLoanBtn = document.getElementById('selectLoan');
-
-        selectStandardBtn.addEventListener('click', function() {
+        // Booking pre-qualifier: document type(s) + timeframe -> appropriate calendar
+        (function () {
+            const step1 = document.getElementById('bookingStep1');
+            const step2 = document.getElementById('bookingStep2');
+            const urgent = document.getElementById('bookingUrgent');
+            const changeBar = document.getElementById('bookingChangeBar');
             const standardCalendar = document.getElementById('calendar-standard');
             const loanCalendar = document.getElementById('calendar-loan');
+            const continueBtn = document.getElementById('docTypeContinue');
+            const docButtons = document.querySelectorAll('#bookingStep1 .doc-type-btn');
+            const selectedDocs = new Set();
 
-            // Hide loan calendar
-            loanCalendar.style.display = 'none';
+            function showOnly(panel) {
+                [step1, step2, urgent].forEach(p => p.classList.remove('active'));
+                standardCalendar.style.display = 'none';
+                loanCalendar.style.display = 'none';
+                changeBar.style.display = 'none';
+                if (panel) panel.classList.add('active');
+                const container = document.querySelector('.booking-form-container');
+                container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
 
-            // Show standard calendar
-            standardCalendar.style.display = 'block';
+            function showCalendar() {
+                // Loan documents need the 60-minute loan signing calendar,
+                // even when combined with general documents
+                const cal = selectedDocs.has('loan') ? loanCalendar : standardCalendar;
+                [step1, step2, urgent].forEach(p => p.classList.remove('active'));
+                standardCalendar.style.display = 'none';
+                loanCalendar.style.display = 'none';
+                cal.style.display = 'block';
+                changeBar.style.display = 'block';
 
-            // Update button states
-            selectStandardBtn.style.opacity = '0.5';
-            selectLoanBtn.style.opacity = '1';
+                // The GHL embed script sizes iframes via postMessage; if this
+                // iframe was hidden at load it never got a real height, so
+                // reload it now that it's visible to trigger a fresh measure
+                const iframe = cal.querySelector('iframe');
+                if (iframe && iframe.offsetHeight < 100) {
+                    iframe.src = iframe.src;
+                }
+                setTimeout(() => {
+                    cal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'booking_selector_complete', {
+                        event_category: 'booking',
+                        event_label: (selectedDocs.has('loan') ? 'loan' : 'standard')
+                    });
+                }
+            }
 
-            // Smooth scroll to calendar
-            setTimeout(() => {
-                standardCalendar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
-        });
+            docButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const doc = btn.dataset.doc;
+                    if (selectedDocs.has(doc)) {
+                        selectedDocs.delete(doc);
+                        btn.classList.remove('selected');
+                        btn.setAttribute('aria-pressed', 'false');
+                    } else {
+                        selectedDocs.add(doc);
+                        btn.classList.add('selected');
+                        btn.setAttribute('aria-pressed', 'true');
+                    }
+                    continueBtn.disabled = selectedDocs.size === 0;
+                });
+            });
 
-        selectLoanBtn.addEventListener('click', function() {
-            const standardCalendar = document.getElementById('calendar-standard');
-            const loanCalendar = document.getElementById('calendar-loan');
+            continueBtn.addEventListener('click', function () {
+                showOnly(step2);
+            });
 
-            // Hide standard calendar
-            standardCalendar.style.display = 'none';
+            document.querySelectorAll('.timeframe-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    if (btn.dataset.time === 'asap') {
+                        showOnly(urgent);
+                    } else {
+                        showCalendar();
+                    }
+                });
+            });
 
-            // Show loan calendar
-            loanCalendar.style.display = 'block';
+            document.getElementById('backToStep1').addEventListener('click', function (e) {
+                e.preventDefault();
+                showOnly(step1);
+            });
 
-            // Update button states
-            selectStandardBtn.style.opacity = '1';
-            selectLoanBtn.style.opacity = '0.5';
+            document.getElementById('backToStep2').addEventListener('click', function (e) {
+                e.preventDefault();
+                showOnly(step2);
+            });
 
-            // Smooth scroll to calendar
-            setTimeout(() => {
-                loanCalendar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
-        });
+            document.getElementById('urgentBookAnyway').addEventListener('click', function (e) {
+                e.preventDefault();
+                showCalendar();
+            });
+
+            document.getElementById('bookingReset').addEventListener('click', function (e) {
+                e.preventDefault();
+                showOnly(step1);
+            });
+        })();
     </script>
 
     <!-- Emergency Triage Modal -->
