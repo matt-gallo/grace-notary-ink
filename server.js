@@ -9,6 +9,8 @@ const mimeTypes = {
   '.css': 'text/css',
   '.js': 'text/javascript',
   '.json': 'application/json',
+  '.xml': 'application/xml',
+  '.txt': 'text/plain',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
