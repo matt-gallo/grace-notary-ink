@@ -380,6 +380,23 @@ html {
         linear-gradient(135deg, var(--ink-900) 0%, var(--primary-color) 100%);
     background-size: 24px 24px, cover;
     padding: 4rem 2rem;
+    color: var(--white);
+}
+
+/* Everything inside the dark band reads in white */
+.service-areas h2,
+.service-areas p,
+.service-areas li,
+.service-areas strong,
+.service-areas .counties,
+.service-areas .counties-list li,
+.service-areas .counties-list li::before {
+    color: var(--white);
+}
+
+.service-areas a {
+    color: var(--white);
+    text-decoration: underline;
 }
 
 .cta-box,
